@@ -1,0 +1,387 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+<meta name="theme-color" content="#080b12">
+<meta name="description" content="F5 STORE - PUBG Mobile UC Top Up and Accounts">
+<title>F5 STORE | PUBG Mobile Store</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root{--bg:#080b12;--panel:#101725;--panel2:#141e30;--blue:#168cff;--cyan:#35d5ff;--text:#f4f8ff;--muted:#91a0b5;--border:rgba(65,150,255,.18);--radius:18px}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth;scroll-padding-top:85px;overflow-x:clip}
+body{width:100%;min-height:100vh;overflow-x:clip;background:radial-gradient(ellipse at 50% -10%,rgba(0,105,255,.16),transparent 55%),var(--bg);color:var(--text);font-family:'Inter',sans-serif}
+body.modal-open{overflow:hidden}
+button,input{font:inherit}
+button,a{-webkit-tap-highlight-color:transparent}
+a{text-decoration:none;color:inherit}
+img,video{max-width:100%;display:block}
+.container{width:min(1160px,calc(100% - 36px));margin:auto}
+.bg-glow{position:fixed;width:280px;height:280px;border-radius:50%;background:rgba(0,120,255,.12);filter:blur(100px);pointer-events:none;z-index:-1}
+.bg-glow.one{top:250px;left:-180px}.bg-glow.two{top:900px;right:-180px}
+header{position:sticky;top:0;z-index:100;background:rgba(8,11,18,.91);backdrop-filter:blur(18px);border-bottom:1px solid var(--border)}
+.navbar{min-height:76px;display:flex;align-items:center;justify-content:space-between;gap:18px}
+.logo{font-family:'Orbitron',sans-serif;font-size:23px;font-weight:800;letter-spacing:-1px;white-space:nowrap}
+.logo span{color:var(--blue);text-shadow:0 0 18px rgba(22,140,255,.65)}
+.nav{display:flex;align-items:center;gap:27px}
+.nav a{font-size:13px;font-weight:600;color:var(--muted);transition:.25s}
+.nav a:hover{color:white}
+.admin-open{border:1px solid var(--border);background:rgba(22,140,255,.09);color:white;padding:11px 17px;border-radius:10px;font-size:12px;font-weight:800;cursor:pointer;white-space:nowrap}
+.admin-open:hover{background:var(--blue)}
+.menu-toggle{display:none;width:42px;height:42px;border:1px solid var(--border);border-radius:10px;background:var(--panel);color:white;font-size:21px;cursor:pointer}
+.hero{padding:85px 0 65px;text-align:center;position:relative}
+.hero-tag{display:inline-flex;align-items:center;gap:8px;border:1px solid rgba(22,140,255,.3);background:rgba(22,140,255,.08);color:#65c5ff;padding:9px 15px;border-radius:30px;font-size:11px;font-weight:800;letter-spacing:1.3px;margin-bottom:24px}
+.hero h1{font-family:'Orbitron',sans-serif;font-size:clamp(36px,7vw,76px);line-height:1.12;letter-spacing:-2px}
+.hero h1 span{color:var(--blue);text-shadow:0 0 35px rgba(22,140,255,.4)}
+.hero p{max-width:570px;margin:22px auto 28px;color:var(--muted);line-height:1.8;font-size:15px}
+.hero-actions{display:flex;justify-content:center;gap:12px;flex-wrap:wrap}
+.btn-primary,.btn-secondary{display:inline-flex;justify-content:center;align-items:center;min-height:48px;padding:0 23px;border-radius:11px;font-weight:800;font-size:13px;transition:.25s}
+.btn-primary{color:white;background:linear-gradient(110deg,#0875ef,#24baff);box-shadow:0 8px 28px rgba(0,115,255,.2)}
+.btn-primary:hover{transform:translateY(-3px);box-shadow:0 12px 35px rgba(0,115,255,.35)}
+.btn-secondary{border:1px solid var(--border);background:var(--panel);color:white}
+.btn-secondary:hover{border-color:var(--blue)}
+.features{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin-bottom:75px}
+.feature{display:flex;align-items:center;gap:13px;padding:19px;border:1px solid var(--border);border-radius:15px;background:linear-gradient(140deg,#111c2d,#0d1420)}
+.feature-icon{width:43px;height:43px;display:grid;place-items:center;flex-shrink:0;border-radius:12px;background:rgba(22,140,255,.13);color:#5fc7ff;font-size:20px}
+.feature strong{display:block;font-size:12px;margin-bottom:5px}
+.feature small{color:var(--muted);font-size:10px}
+.section{padding:25px 0 75px}
+.section-heading{text-align:center;margin-bottom:35px}
+.section-heading .eyebrow{color:var(--blue);font-size:11px;font-weight:800;letter-spacing:2px;margin-bottom:12px}
+.section-heading h2{font-family:'Orbitron',sans-serif;font-size:clamp(25px,4vw,37px)}
+.section-heading p{color:var(--muted);font-size:13px;margin-top:12px;line-height:1.7}
+.account-tools{display:flex;justify-content:space-between;align-items:center;gap:12px;margin-bottom:22px;flex-wrap:wrap}
+.account-tools p{color:var(--muted);font-size:12px}
+.account-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px;align-items:stretch;grid-auto-rows:1fr}
+.account-card{min-width:0;height:100%;display:flex;flex-direction:column;overflow:hidden;border:1px solid var(--border);border-radius:var(--radius);background:var(--panel);transition:.3s;cursor:pointer}
+.account-card:hover{transform:translateY(-5px);border-color:var(--blue);box-shadow:0 15px 40px rgba(0,105,255,.12)}
+.account-video-preview{width:100%;height:190px;flex:0 0 190px;object-fit:cover;background:radial-gradient(circle at center,rgba(22,140,255,.2),transparent 65%),linear-gradient(135deg,#172a44,#101725)}
+.account-video-placeholder{width:100%;height:190px;flex:0 0 190px;display:grid;place-items:center;background:linear-gradient(135deg,#172a44,#101725);color:var(--muted);font-size:12px}
+.account-info{padding:19px;display:flex;flex-direction:column;flex:1;min-width:0}
+.account-info h3{font-size:16px;height:44px;min-height:44px;margin-bottom:10px;overflow:hidden;overflow-wrap:anywhere;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:2}
+.account-description-preview{color:var(--muted);font-size:12px;line-height:1.8;height:65px;min-height:65px;overflow:hidden;overflow-wrap:anywhere;display:-webkit-box;-webkit-box-orient:vertical;-webkit-line-clamp:3}
+.account-meta{display:flex;justify-content:space-between;gap:8px;padding:9px 0;border-bottom:1px solid var(--border);color:var(--muted);font-size:11px}
+.account-meta strong{color:white}
+.account-price{font-family:'Orbitron',sans-serif;font-size:23px;font-weight:800;margin:auto 0 17px;padding-top:17px}
+.account-buy{display:block;width:100%;flex-shrink:0;text-align:center;padding:12px;border:0;border-radius:9px;background:var(--blue);color:white;font-size:12px;font-weight:800;cursor:pointer}
+.empty-note{padding:30px 18px;text-align:center;color:var(--muted);background:var(--panel);border:1px dashed var(--border);border-radius:15px;line-height:1.8}
+.loading-note{display:block}
+.loading-line{width:min(220px,80%);height:3px;margin:18px auto 0;background:rgba(22,140,255,.15);border-radius:10px;overflow:hidden}
+.loading-line::after{content:"";display:block;width:40%;height:100%;background:var(--cyan);border-radius:10px;animation:loadingMove 1s infinite ease-in-out}
+@keyframes loadingMove{from{transform:translateX(-120%)}to{transform:translateX(280%)}}
+.account-details-modal{display:none;position:fixed;inset:0;z-index:600;padding:18px;align-items:flex-start;justify-content:center;background:rgba(0,0,0,.86);backdrop-filter:blur(12px);overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;touch-action:pan-y}
+.account-details-modal.open{display:flex}
+.account-details-box{width:100%;max-width:820px;max-height:calc(100vh - 36px);min-height:0;overflow-y:auto;overflow-x:hidden;-webkit-overflow-scrolling:touch;overscroll-behavior-y:contain;touch-action:pan-y;margin:auto 0;position:relative;border:1px solid rgba(65,150,255,.3);border-radius:18px;background:#101725;box-shadow:0 25px 90px rgba(0,0,0,.55);animation:detailsAppear .22s ease}
+@keyframes detailsAppear{from{opacity:0;transform:translateY(15px)}to{opacity:1;transform:translateY(0)}}
+.details-close{position:absolute;z-index:5;top:12px;right:12px;width:42px;height:42px;border:1px solid rgba(255,255,255,.2);border-radius:50%;background:rgba(0,0,0,.75);color:white;font-size:25px;cursor:pointer}
+.details-video{display:block;width:100%;max-height:470px;aspect-ratio:16/9;object-fit:contain;background:#000}
+.details-video-placeholder{display:none;width:100%;aspect-ratio:16/9;max-height:470px;align-items:center;justify-content:center;background:#080b12;color:var(--muted);font-size:13px}
+.video-tools{display:flex;justify-content:center;align-items:center;gap:13px;padding:13px;background:#0b1220;border-bottom:1px solid var(--border)}
+.video-icon-button{width:43px;height:43px;display:grid;place-items:center;border:1px solid rgba(22,140,255,.4);border-radius:12px;background:rgba(22,140,255,.12);color:#65c5ff;cursor:pointer;transition:.2s}
+.video-icon-button:hover{background:var(--blue);color:white}
+.video-icon-button svg{width:21px;height:21px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.video-help{padding:0 15px 13px;text-align:center;background:#0b1220;color:var(--muted);font-size:11px;line-height:1.7}
+.details-content{padding:25px;overflow-wrap:anywhere}
+.details-content h2{font-size:25px;margin-bottom:15px;overflow-wrap:anywhere}
+.details-description-title{color:var(--cyan);font-size:12px;font-weight:800;margin-bottom:9px}
+.details-description{color:#c0ccdc;font-size:14px;line-height:2;white-space:pre-wrap;overflow-wrap:anywhere;margin-bottom:18px}
+.details-price{font-family:'Orbitron',sans-serif;color:var(--cyan);font-size:25px;font-weight:800;margin-bottom:20px}
+.details-actions{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:12px}
+.details-actions button{flex:1;min-width:150px}
+.details-whatsapp{min-height:48px;padding:12px;border:0;border-radius:10px;background:linear-gradient(110deg,#0875ef,#24baff);color:white;font-weight:800;cursor:pointer}
+.details-share{min-height:48px;padding:12px;border:1px solid rgba(22,140,255,.4);border-radius:10px;background:rgba(22,140,255,.13);color:white;font-weight:800;cursor:pointer}
+.details-close-bottom{min-height:48px;padding:12px;border:1px solid var(--border);border-radius:10px;background:var(--panel2);color:white;font-weight:800;cursor:pointer}
+.packages{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:17px}
+.package-card{position:relative;overflow:hidden;padding:24px;min-width:0;border:1px solid var(--border);border-radius:var(--radius);background:linear-gradient(145deg,#142238,#0d1420 75%);cursor:pointer;transition:.3s}
+.package-card::after{content:"";position:absolute;width:140px;height:140px;background:rgba(22,140,255,.13);filter:blur(55px);right:-55px;top:-65px;pointer-events:none}
+.package-card:hover{transform:translateY(-6px);border-color:var(--blue);box-shadow:0 15px 40px rgba(0,105,255,.12)}
+.uc-icon{display:none}
+.package-card .amount{font-family:'Orbitron',sans-serif;font-size:25px;font-weight:800}
+.package-card .unit{color:var(--cyan);font-size:12px;font-weight:800;margin-left:4px}
+.package-card .price{font-size:23px;font-weight:800;margin:17px 0}
+.package-card .buy-label{display:block;padding:12px;text-align:center;border-radius:9px;color:white;background:rgba(22,140,255,.13);border:1px solid rgba(22,140,255,.3);font-size:11px;font-weight:800}
+.package-card:hover .buy-label{background:var(--blue)}
+.steps{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.step{padding:23px;background:var(--panel);border:1px solid var(--border);border-radius:15px}
+.step-number{font-family:'Orbitron',sans-serif;color:var(--blue);font-size:25px;margin-bottom:15px}
+.step h3{font-size:14px;margin-bottom:9px}
+.step p{font-size:11px;line-height:1.8;color:var(--muted)}
+footer{border-top:1px solid var(--border);padding:30px 0;text-align:center;color:var(--muted);font-size:11px}
+footer .logo{margin-bottom:12px;font-size:19px}
+
+/* Feedback gallery */
+.feedback-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:15px}
+.feedback-card{overflow:hidden;border:1px solid var(--border);border-radius:14px;background:var(--panel);cursor:pointer;transition:.25s}
+.feedback-card:hover{transform:translateY(-4px);border-color:var(--blue)}
+.feedback-card img{width:100%;height:150px;object-fit:cover;background:#101725}
+.feedback-card span{display:block;padding:10px;text-align:center;color:var(--muted);font-size:11px}
+.feedback-placeholder{height:150px;display:grid;place-items:center;color:var(--muted);font-size:12px;background:linear-gradient(135deg,#172a44,#101725)}
+.image-modal{display:none;position:fixed;inset:0;z-index:900;background:rgba(0,0,0,.93);padding:20px;align-items:center;justify-content:center}
+.image-modal.open{display:flex}
+.image-modal img{max-width:95vw;max-height:85vh;object-fit:contain;border:1px solid var(--border);border-radius:12px}
+.image-modal-close{position:absolute;top:18px;right:18px;width:44px;height:44px;border:1px solid #ffffff55;border-radius:50%;background:#111;color:white;font-size:26px;cursor:pointer}
+
+/* Floating WhatsApp */
+.floating-whatsapp{position:fixed;right:20px;bottom:20px;z-index:1000;width:58px;height:58px;border-radius:50%;display:grid;place-items:center;background:#16c76a;color:white;box-shadow:0 5px 22px rgba(0,200,100,.4);border:2px solid rgba(255,255,255,.25);transition:.2s}
+.floating-whatsapp:hover{transform:translateY(-4px) scale(1.05);background:#0eae59}
+.floating-whatsapp svg{width:31px;height:31px;fill:currentColor}
+.admin-modal{display:none;position:fixed;inset:0;z-index:500;padding:18px;align-items:center;justify-content:center;background:rgba(0,0,0,.8);backdrop-filter:blur(10px)}
+.admin-modal.open{display:flex}
+.admin-box{width:100%;max-width:420px;position:relative;padding:30px;border-radius:20px;border:1px solid var(--border);background:#101a2a;box-shadow:0 25px 80px rgba(0,0,0,.5)}
+.close-admin{position:absolute;right:17px;top:15px;border:0;background:transparent;color:var(--muted);font-size:25px;cursor:pointer}
+.admin-box h2{font-family:'Orbitron',sans-serif;font-size:22px;margin-bottom:9px}
+.admin-box>p{color:var(--muted);font-size:12px;margin-bottom:24px;line-height:1.7}
+.admin-box label{display:block;font-size:11px;font-weight:700;margin:16px 0 8px}
+.admin-box input{width:100%;min-width:0;height:47px;border:1px solid var(--border);border-radius:10px;padding:0 13px;outline:none;background:#080f1c;color:white}
+.admin-box input:focus{border-color:var(--blue)}
+.login-button{width:100%;margin-top:20px;min-height:48px;border:0;border-radius:10px;background:linear-gradient(100deg,#0875ef,#24baff);color:white;font-weight:800;cursor:pointer}
+.login-button:disabled{opacity:.6;cursor:wait}
+.login-status{margin-top:15px;font-size:11px;line-height:1.7;overflow-wrap:anywhere}
+.login-status.error{color:#ff7676}.login-status.success{color:#50dfa0}
+.admin-session{margin-top:18px;padding:16px;background:rgba(22,140,255,.1);border:1px solid var(--border);border-radius:12px;font-size:12px}
+.admin-session button{margin-top:13px;padding:9px 15px;border:1px solid var(--border);background:var(--panel2);color:white;border-radius:8px;cursor:pointer}
+.reveal{opacity:0;transform:translateY(18px);transition:opacity .65s ease,transform .65s ease}
+.reveal.visible{opacity:1;transform:translateY(0)}
+@media(max-width:850px){.packages,.account-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.features{grid-template-columns:1fr}.feature{padding:15px}}
+@media(max-width:600px){
+.container{width:calc(100% - 28px)}.navbar{min-height:66px}.logo{font-size:20px}
+.menu-toggle{display:block}.nav{display:none;position:absolute;top:66px;left:0;right:0;padding:18px;flex-direction:column;align-items:stretch;gap:0;background:#0d1420;border-bottom:1px solid var(--border)}
+.nav.open{display:flex}.nav a{padding:14px 8px;border-bottom:1px solid var(--border)}
+.admin-open{padding:10px 12px;font-size:10px}.hero{padding:65px 0 48px}
+.hero h1{font-size:clamp(32px,10vw,48px);letter-spacing:-1.5px}.hero p{font-size:13px}
+.features{margin-bottom:48px;gap:10px}.section{padding:15px 0 55px}.section-heading{margin-bottom:25px}
+.packages{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.package-card{padding:16px 12px;border-radius:13px}.package-card .amount{font-size:20px}.package-card .price{font-size:19px;margin:13px 0}.package-card .buy-label{padding:11px 5px;font-size:10px}
+.account-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}
+.account-video-preview,.account-video-placeholder{height:120px;flex-basis:120px}
+.account-info{padding:12px}.account-info h3{font-size:13px;height:36px;min-height:36px}
+.account-description-preview{font-size:10px;height:54px;min-height:54px}.account-meta{font-size:9px}
+.account-price{font-size:18px}.account-buy{padding:10px 5px;font-size:10px}
+.account-details-modal{padding:10px;align-items:flex-start}.account-details-box{max-height:calc(100dvh - 20px);margin:auto 0;border-radius:14px}
+.details-content{padding:17px;padding-bottom:25px}.details-content h2{font-size:20px}.details-description{font-size:12px}
+.details-video{max-height:260px}.details-actions{flex-direction:column}.details-actions button{width:100%;min-width:0}
+.steps{grid-template-columns:1fr}.admin-box{padding:25px 19px}
+.feedback-grid{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}.feedback-card img,.feedback-placeholder{height:115px}
+.floating-whatsapp{width:54px;height:54px;right:14px;bottom:14px}
+}
+@media(max-width:360px){.container{width:calc(100% - 22px)}.packages,.account-grid{grid-template-columns:1fr}.package-card{padding:20px}.account-video-preview,.account-video-placeholder{height:160px;flex-basis:160px}.hero-actions{flex-direction:column}.btn-primary,.btn-secondary{width:100%}}
+@media(prefers-reduced-motion:reduce){*,*::before,*::after{scroll-behavior:auto!important;animation-duration:.01ms!important;transition-duration:.01ms!important}.reveal{opacity:1;transform:none}}
+</style>
+</head>
+
+<body>
+<div class="bg-glow one"></div>
+<div class="bg-glow two"></div>
+
+<header>
+  <div class="container navbar">
+    <a href="#home" class="logo">F5 <span>STORE</span></a>
+    <nav class="nav" id="nav">
+      <a href="#home">Home</a>
+      <a href="#accounts">PUBG Accounts</a>
+      <a href="#uc">UC Prices</a>
+      <a href="#feedback">Feedback</a>
+      <a href="#how">How It Works</a>
+    </nav>
+    <div style="display:flex;align-items:center;gap:9px">
+      <button class="admin-open" id="openAdmin">ADMIN LOGIN</button>
+      <button class="menu-toggle" id="menuToggle" aria-expanded="false" aria-label="Open menu">☰</button>
+    </div>
+  </div>
+</header>
+
+<main>
+<section class="hero container" id="home">
+  <div class="hero-tag">THE ULTIMATE PUBG STORE</div>
+  <h1>LEVEL UP YOUR<br><span>GAME.</span></h1>
+  <p>Your destination for PUBG Mobile UC top-ups and gaming accounts. Simple ordering, clear prices and direct support.</p>
+  <div class="hero-actions">
+    <a href="#accounts" class="btn-primary">EXPLORE ACCOUNTS</a>
+    <a href="#uc" class="btn-secondary">VIEW UC PRICES</a>
+    <a href="https://chat.whatsapp.com/CsfayjDAzkc2sMyrJ1xEbO" target="_blank" rel="noopener" class="btn-secondary">JOIN WHATSAPP GROUP</a>
+  </div>
+</section>
+
+<section class="container features">
+  <div class="feature"><div class="feature-icon">01</div><div><strong>Easy Ordering</strong><small>Order directly through WhatsApp</small></div></div>
+  <div class="feature"><div class="feature-icon">02</div><div><strong>UC & Accounts</strong><small>Two services in one store</small></div></div>
+  <div class="feature"><div class="feature-icon">03</div><div><strong>Direct Support</strong><small>Contact our store for assistance</small></div></div>
+</section>
+
+<section class="section container" id="accounts">
+  <div class="section-heading reveal"><div class="eyebrow">PREMIUM COLLECTION</div><h2>PUBG ACCOUNTS</h2><p>Explore available accounts and contact us for details.</p></div>
+  <div class="account-tools"><p>AVAILABLE ACCOUNTS</p><p>Choose an account to see its video and full details.</p></div>
+  <div class="account-grid" id="accountsGrid"></div>
+  <div class="empty-note loading-note" id="accountsLoading">LOADING ACCOUNTS...<div class="loading-line"></div></div>
+  <div class="empty-note" id="accountsEmpty" hidden>No accounts are available right now. Please check again later.</div>
+  <div class="empty-note" id="accountsError" hidden>Unable to load accounts right now. Please refresh the page and try again.</div>
+</section>
+
+<section class="section container" id="uc">
+  <div class="section-heading reveal"><div class="eyebrow">PUBG MOBILE</div><h2>UC PRICES</h2><p>Choose your UC package and order through WhatsApp.</p></div>
+  <div class="packages">
+    <div class="package-card reveal" data-uc="60 UC" data-price="0.99"><div class="amount">60 <span class="unit">UC</span></div><div class="price">$0.99</div><div class="buy-label">ORDER NOW</div></div>
+    <div class="package-card reveal" data-uc="325 UC" data-price="4.99"><div class="amount">325 <span class="unit">UC</span></div><div class="price">$4.99</div><div class="buy-label">ORDER NOW</div></div>
+    <div class="package-card reveal" data-uc="660 UC" data-price="9.49"><div class="amount">660 <span class="unit">UC</span></div><div class="price">$9.49</div><div class="buy-label">ORDER NOW</div></div>
+    <div class="package-card reveal" data-uc="1800 UC" data-price="23.99"><div class="amount">1800 <span class="unit">UC</span></div><div class="price">$23.99</div><div class="buy-label">ORDER NOW</div></div>
+    <div class="package-card reveal" data-uc="3500 UC" data-price="47.50"><div class="amount">3500 <span class="unit">UC</span></div><div class="price">$47.50</div><div class="buy-label">ORDER NOW</div></div>
+    <div class="package-card reveal" data-uc="8100 UC" data-price="95.00"><div class="amount">8100 <span class="unit">UC</span></div><div class="price">$95.00</div><div class="buy-label">ORDER NOW</div></div>
+  </div>
+</section>
+
+<section class="section container" id="feedback">
+  <div class="section-heading reveal"><div class="eyebrow">CUSTOMER REVIEWS</div><h2>FEEDBACK</h2><p>Customer feedback and successful order confirmations.</p></div>
+  <div class="feedback-grid">
+    <div class="feedback-card" data-image="feedback/Feedback1.jpg"><img src="feedback/Feedback1.jpg" alt="Feedback 1" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="feedback-placeholder" style="display:none">Feedback1</div><span>Feedback 1</span></div>
+    <div class="feedback-card" data-image="feedback/Feedback2.jpg"><img src="feedback/Feedback2.jpg" alt="Feedback 2" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="feedback-placeholder" style="display:none">Feedback2</div><span>Feedback 2</span></div>
+    <div class="feedback-card" data-image="feedback/Feedback3.jpg"><img src="feedback/Feedback3.jpg" alt="Feedback 3" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="feedback-placeholder" style="display:none">Feedback3</div><span>Feedback 3</span></div>
+    <div class="feedback-card" data-image="feedback/Feedback4.jpg"><img src="feedback/Feedback4.jpg" alt="Feedback 4" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="feedback-placeholder" style="display:none">Feedback4</div><span>Feedback 4</span></div>
+    <div class="feedback-card" data-image="feedback/Feedback5.jpg"><img src="feedback/Feedback5.jpg" alt="Feedback 5" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="feedback-placeholder" style="display:none">Feedback5</div><span>Feedback 5</span></div>
+    <div class="feedback-card" data-image="feedback/Feedback6.jpg"><img src="feedback/Feedback6.jpg" alt="Feedback 6" loading="lazy" onerror="this.style.display='none';this.nextElementSibling.style.display='grid'"><div class="feedback-placeholder" style="display:none">Feedback6</div><span>Feedback 6</span></div>
+  </div>
+</section>
+
+<section class="section container" id="how">
+  <div class="section-heading reveal"><div class="eyebrow">SIMPLE PROCESS</div><h2>HOW IT WORKS</h2><p>Getting what you need is easy.</p></div>
+  <div class="steps">
+    <div class="step reveal"><div class="step-number">01</div><h3>Choose Your Product</h3><p>Select a UC package or browse the available PUBG accounts.</p></div>
+    <div class="step reveal"><div class="step-number">02</div><h3>Contact F5 STORE</h3><p>Click the order button and send your request through WhatsApp.</p></div>
+    <div class="step reveal"><div class="step-number">03</div><h3>Confirm Your Order</h3><p>Our store will confirm the details and availability with you.</p></div>
+  </div>
+</section>
+</main>
+
+<footer><div class="container"><div class="logo">F5 <span style="color:#168cff">STORE</span></div><p>PUBG MOBILE UC & ACCOUNTS</p><p style="margin-top:10px">© <span id="year"></span> F5 STORE. All rights reserved.</p></div></footer>
+
+<!-- Floating WhatsApp group shortcut -->
+<a class="floating-whatsapp" href="https://chat.whatsapp.com/CsfayjDAzkc2sMyrJ1xEbO" target="_blank" rel="noopener" aria-label="Join F5 STORE WhatsApp group" title="Join WhatsApp Group">
+<svg viewBox="0 0 32 32" aria-hidden="true"><path d="M16.02 3C8.86 3 3.04 8.8 3.04 15.95c0 2.28.6 4.5 1.74 6.47L3 29l6.77-1.77a13 13 0 0 0 6.24 1.59h.01c7.15 0 12.97-5.82 12.97-12.97A12.9 12.9 0 0 0 16.02 3zm0 23.62h-.01a10.7 10.7 0 0 1-5.45-1.49l-.39-.23-4.02 1.05 1.07-3.92-.25-.4a10.65 10.65 0 1 1 9.05 4.99zm5.85-7.98c-.32-.16-1.9-.94-2.2-1.05-.3-.11-.51-.16-.72.16-.21.32-.83 1.05-1.02 1.27-.19.21-.37.24-.69.08-.32-.16-1.35-.5-2.57-1.59-.95-.85-1.59-1.9-1.78-2.22-.19-.32-.02-.49.14-.65.14-.14.32-.37.48-.56.16-.19.21-.32.32-.53.11-.21.05-.4-.03-.56-.08-.16-.72-1.74-.99-2.38-.26-.62-.52-.53-.72-.54h-.61c-.21 0-.56.08-.85.4-.29.32-1.11 1.08-1.11 2.64s1.14 3.06 1.3 3.27c.16.21 2.24 3.42 5.43 4.8.76.33 1.35.53 1.81.68.76.24 1.45.21 2 .13.61-.09 1.9-.78 2.17-1.53.27-.75.27-1.4.19-1.53-.08-.13-.29-.21-.61-.37z"/></svg>
+</a>
+
+<!-- Feedback image viewer -->
+<div class="image-modal" id="feedbackImageModal" aria-hidden="true">
+  <button class="image-modal-close" id="closeFeedbackImage" aria-label="Close">×</button>
+  <img id="feedbackLargeImage" src="" alt="Customer feedback">
+</div>
+
+<div class="account-details-modal" id="accountDetailsModal" aria-hidden="true">
+  <div class="account-details-box">
+    <button class="details-close" id="closeAccountDetails" aria-label="Close">×</button>
+    <video class="details-video" id="accountDetailsVideo" controls playsinline preload="metadata"></video>
+    <div class="details-video-placeholder" id="accountDetailsVideoPlaceholder">VIDEO NOT AVAILABLE</div>
+    <div class="video-tools" id="accountVideoTools">
+      <button class="video-icon-button" id="downloadAccountVideo" aria-label="Download video" title="Download video">
+        <svg viewBox="0 0 24 24"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><path d="m7 10 5 5 5-5"/><path d="M12 15V3"/></svg>
+      </button>
+      <button class="video-icon-button" id="shareAccountVideo" aria-label="Share video" title="Share video">
+        <svg viewBox="0 0 24 24"><circle cx="18" cy="5" r="3"/><circle cx="6" cy="12" r="3"/><circle cx="18" cy="19" r="3"/><path d="m8.7 10.7 6.6-4.4M8.7 13.3l6.6 4.4"/></svg>
+      </button>
+    </div>
+    <div class="video-help" id="accountVideoHelp">If the video keeps buffering or does not play, download it and open it from your Gallery.</div>
+    <div class="details-content">
+      <h2 id="accountDetailsTitle">ACCOUNT DETAILS</h2>
+      <div class="details-description-title">DESCRIPTION</div>
+      <div class="details-description" id="accountDetailsDescription"></div>
+      <div class="details-price" id="accountDetailsPrice"></div>
+      <div class="details-actions">
+        <button class="details-whatsapp" id="accountDetailsWhatsApp">CONTACT VIA WHATSAPP</button>
+        <button class="details-share" id="accountDetailsShare">SHARE ACCOUNT</button>
+      </div>
+      <div class="details-actions"><button class="details-close-bottom" id="closeAccountDetailsBottom">CLOSE</button></div>
+    </div>
+  </div>
+</div>
+
+<div class="admin-modal" id="adminModal" aria-hidden="true">
+  <div class="admin-box">
+    <button class="close-admin" id="closeAdmin" aria-label="Close">×</button>
+    <h2>ADMIN LOGIN</h2>
+    <p>Sign in to access the F5 STORE administration area.</p>
+    <form id="loginForm">
+      <label for="adminEmail">EMAIL ADDRESS</label>
+      <input type="email" id="adminEmail" placeholder="Admin email" autocomplete="username" required>
+      <label for="adminPassword">PASSWORD</label>
+      <input type="password" id="adminPassword" placeholder="Your password" autocomplete="current-password" required>
+      <button type="submit" class="login-button" id="loginButton">SIGN IN</button>
+    </form>
+    <div class="login-status" id="loginStatus" role="status"></div>
+    <div class="admin-session" id="adminSession" hidden>
+      <strong>ADMIN SESSION ACTIVE</strong>
+      <p id="sessionText" style="margin-top:8px;color:#91a0b5"></p>
+      <button type="button" id="logoutButton">SIGN OUT</button>
+    </div>
+  </div>
+</div>
+
+<script>
+document.getElementById('year').textContent = new Date().getFullYear();
+
+/* Mobile menu */
+const menuToggle=document.getElementById('menuToggle');
+const nav=document.getElementById('nav');
+menuToggle?.addEventListener('click',()=>{
+  const isOpen=nav.classList.toggle('open');
+  menuToggle.setAttribute('aria-expanded',String(isOpen));
+});
+nav?.querySelectorAll('a').forEach(a=>a.addEventListener('click',()=>{
+  nav.classList.remove('open');
+  menuToggle?.setAttribute('aria-expanded','false');
+}));
+
+/* Feedback image viewer */
+const feedbackModal=document.getElementById('feedbackImageModal');
+const feedbackLargeImage=document.getElementById('feedbackLargeImage');
+document.querySelectorAll('.feedback-card').forEach(card=>{
+  card.addEventListener('click',()=>{
+    const img=card.querySelector('img');
+    if(!img || !img.complete || img.naturalWidth===0) return;
+    feedbackLargeImage.src=card.dataset.image;
+    feedbackModal.classList.add('open');
+    feedbackModal.setAttribute('aria-hidden','false');
+    document.body.classList.add('modal-open');
+  });
+});
+function closeFeedbackViewer(){
+  feedbackModal.classList.remove('open');
+  feedbackModal.setAttribute('aria-hidden','true');
+  feedbackLargeImage.src='';
+  document.body.classList.remove('modal-open');
+}
+document.getElementById('closeFeedbackImage').addEventListener('click',closeFeedbackViewer);
+feedbackModal.addEventListener('click',e=>{if(e.target===feedbackModal)closeFeedbackViewer()});
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeFeedbackViewer()});
+
+/* Reveal animations */
+if('IntersectionObserver' in window){
+  const revealObserver=new IntersectionObserver(entries=>{
+    entries.forEach(entry=>{
+      if(entry.isIntersecting){
+        entry.target.classList.add('visible');
+        revealObserver.unobserve(entry.target);
+      }
+    });
+  },{threshold:.12});
+  document.querySelectorAll('.reveal').forEach(el=>revealObserver.observe(el));
+}else{
+  document.querySelectorAll('.reveal').forEach(el=>el.classList.add('visible'));
+}
+
+/* UC order buttons */
+document.querySelectorAll('.package-card').forEach(card=>{
+  card.addEventListener('click',()=>{
+    const uc=card.dataset.uc;
+    const price=card.dataset.price;
+    const message=`Hi F5 STORE!\n\nI want to order ${uc}.\nPrice: $${price}\n\nPlease help me complete my order.`;
+    window.open(`https://wa.me/96181607574?text=${encodeURIComponent(message)}`,'_blank','noopener');
+  });
+});
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
+<script type="module" src="app.js"></script>
+</body>
+</html>

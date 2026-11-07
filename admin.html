@@ -1,0 +1,1134 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#080b12">
+<title>F5 STORE | Admin Dashboard</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;600;700;800&family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root {
+  --bg: #080b12;
+  --panel: #101725;
+  --panel2: #141e30;
+  --blue: #168cff;
+  --cyan: #35d5ff;
+  --text: #f4f8ff;
+  --muted: #91a0b5;
+  --border: rgba(65,150,255,.2);
+  --red: #ff6262;
+  --green: #50dfa0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  min-height: 100vh;
+  background:
+    radial-gradient(ellipse at 50% -10%, rgba(0,105,255,.16), transparent 55%),
+    var(--bg);
+  color: var(--text);
+  font-family: 'Inter', sans-serif;
+}
+
+button, input, textarea, select {
+  font: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.container {
+  width: min(1050px, calc(100% - 30px));
+  margin: auto;
+}
+
+header {
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  background: rgba(8,11,18,.94);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(15px);
+}
+
+.navbar {
+  min-height: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 15px;
+}
+
+.logo {
+  font-family: 'Orbitron', sans-serif;
+  font-size: 21px;
+  font-weight: 800;
+}
+
+.logo span {
+  color: var(--blue);
+}
+
+.header-actions {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.header-actions a,
+.header-actions button {
+  padding: 10px 14px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  color: white;
+  background: var(--panel);
+  text-decoration: none;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.header-actions .uploadcare-link {
+  background: linear-gradient(100deg, #0875ef, #24baff);
+  border-color: transparent;
+}
+
+.header-actions button {
+  background: rgba(255,80,80,.1);
+  border-color: rgba(255,80,80,.3);
+}
+
+main {
+  padding: 35px 0 65px;
+}
+
+.page-heading {
+  margin-bottom: 25px;
+}
+
+.eyebrow {
+  color: var(--blue);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+}
+
+h1, h2 {
+  font-family: 'Orbitron', sans-serif;
+}
+
+h1 {
+  font-size: clamp(25px, 5vw, 38px);
+}
+
+.page-heading p {
+  color: var(--muted);
+  font-size: 13px;
+  line-height: 1.7;
+  margin-top: 10px;
+}
+
+.panel {
+  padding: 23px;
+  margin-bottom: 22px;
+  border: 1px solid var(--border);
+  border-radius: 16px;
+  background: linear-gradient(145deg, #111c2d, #0d1420);
+}
+
+.panel h2 {
+  font-size: 17px;
+  margin-bottom: 18px;
+}
+
+.field {
+  margin-bottom: 15px;
+}
+
+.field label {
+  display: block;
+  margin-bottom: 8px;
+  font-size: 11px;
+  font-weight: 800;
+  color: #cbd8e9;
+}
+
+.field input,
+.field textarea,
+.field select {
+  width: 100%;
+  min-height: 46px;
+  padding: 12px;
+  border: 1px solid var(--border);
+  border-radius: 9px;
+  outline: none;
+  background: #080f1c;
+  color: white;
+}
+
+.field textarea {
+  min-height: 115px;
+  resize: vertical;
+  line-height: 1.7;
+}
+
+.field input:focus,
+.field textarea:focus,
+.field select:focus {
+  border-color: var(--blue);
+}
+
+.field small {
+  display: block;
+  margin-top: 7px;
+  color: var(--muted);
+  font-size: 10px;
+  line-height: 1.6;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.primary-button,
+.secondary-button,
+.delete-button {
+  min-height: 44px;
+  padding: 11px 16px;
+  border: 0;
+  border-radius: 9px;
+  font-size: 11px;
+  font-weight: 800;
+}
+
+.primary-button {
+  background: linear-gradient(100deg, #0875ef, #24baff);
+  color: white;
+}
+
+.secondary-button {
+  background: var(--panel2);
+  color: white;
+  border: 1px solid var(--border);
+}
+
+.delete-button {
+  background: rgba(255,80,80,.12);
+  color: #ff8888;
+  border: 1px solid rgba(255,80,80,.3);
+}
+
+button:disabled {
+  opacity: .55;
+  cursor: wait;
+}
+
+.form-actions {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.message {
+  display: none;
+  margin-top: 15px;
+  padding: 12px;
+  border-radius: 9px;
+  font-size: 12px;
+  line-height: 1.6;
+  overflow-wrap: anywhere;
+}
+
+.message.success {
+  display: block;
+  color: var(--green);
+  background: rgba(80,223,160,.08);
+  border: 1px solid rgba(80,223,160,.2);
+}
+
+.message.error {
+  display: block;
+  color: #ff8888;
+  background: rgba(255,80,80,.08);
+  border: 1px solid rgba(255,80,80,.2);
+}
+
+#dashboard {
+  display: none;
+}
+
+#loginPanel {
+  max-width: 460px;
+  margin: 45px auto;
+}
+
+#loginPanel h2 {
+  margin-bottom: 10px;
+}
+
+.muted {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+}
+
+.account-list {
+  display: grid;
+  gap: 13px;
+}
+
+.admin-account {
+  padding: 17px;
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  background: var(--panel);
+}
+
+.admin-account-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 10px;
+}
+
+.admin-account h3 {
+  font-size: 15px;
+  overflow-wrap: anywhere;
+}
+
+.admin-account p {
+  color: var(--muted);
+  font-size: 12px;
+  line-height: 1.7;
+  white-space: pre-wrap;
+  overflow-wrap: anywhere;
+  margin: 8px 0;
+}
+
+.account-price {
+  color: var(--cyan);
+  font-family: 'Orbitron', sans-serif;
+  font-weight: 800;
+  margin: 10px 0;
+}
+
+.status {
+  flex-shrink: 0;
+  padding: 6px 9px;
+  border-radius: 20px;
+  font-size: 9px;
+  font-weight: 800;
+}
+
+.status.available {
+  color: var(--green);
+  background: rgba(80,223,160,.1);
+}
+
+.status.sold {
+  color: #ff9999;
+  background: rgba(255,80,80,.1);
+}
+
+.account-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 13px;
+}
+
+.account-actions button {
+  min-height: 37px;
+  padding: 8px 12px;
+  font-size: 10px;
+}
+
+#loginStatus {
+  margin-top: 12px;
+}
+
+#adminEmail,
+#adminPassword {
+  direction: ltr;
+}
+
+.hidden {
+  display: none !important;
+}
+
+@media (max-width: 600px) {
+  .container {
+    width: calc(100% - 24px);
+  }
+
+  .navbar {
+    min-height: 62px;
+  }
+
+  .logo {
+    font-size: 17px;
+  }
+
+  .header-actions a,
+  .header-actions button {
+    padding: 9px 10px;
+    font-size: 9px;
+  }
+
+  main {
+    padding-top: 25px;
+  }
+
+  .panel {
+    padding: 17px;
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+    gap: 0;
+  }
+
+  .admin-account-top {
+    flex-direction: column;
+  }
+
+  .form-actions button {
+    flex: 1;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <div class="container navbar">
+    <div class="logo">F5 <span>STORE</span></div>
+
+    <div class="header-actions">
+      <a href="index.html">VIEW STORE</a>
+
+      <a
+        class="uploadcare-link"
+        href="https://app.uploadcare.com/projects/77811dd699b2347ef743/get-started/"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        OPEN UPLOADCARE
+      </a>
+
+      <button id="logoutButton" type="button" hidden>SIGN OUT</button>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+
+  <div class="page-heading">
+    <div class="eyebrow">STORE MANAGEMENT</div>
+    <h1>ADMIN DASHBOARD</h1>
+    <p>Manage PUBG Mobile account listings and their availability.</p>
+  </div>
+
+  <!-- LOGIN -->
+
+  <section class="panel" id="loginPanel">
+    <h2>ADMIN LOGIN</h2>
+    <p class="muted">Sign in with your F5 STORE administrator account.</p>
+
+    <form id="loginForm">
+      <div class="field">
+        <label for="adminEmail">EMAIL ADDRESS</label>
+        <input
+          id="adminEmail"
+          type="email"
+          autocomplete="username"
+          required
+          placeholder="Admin email"
+        >
+      </div>
+
+      <div class="field">
+        <label for="adminPassword">PASSWORD</label>
+        <input
+          id="adminPassword"
+          type="password"
+          autocomplete="current-password"
+          required
+          placeholder="Password"
+        >
+      </div>
+
+      <button class="primary-button" id="loginButton" type="submit">
+        SIGN IN
+      </button>
+
+      <div class="message" id="loginStatus" role="status"></div>
+    </form>
+  </section>
+
+  <!-- DASHBOARD -->
+
+  <div id="dashboard">
+
+    <section class="panel">
+      <h2 id="formHeading">ADD NEW ACCOUNT</h2>
+      <p class="muted">
+        Enter the account information. Add a thumbnail image URL to show a picture on the store card.
+      </p>
+
+      <form id="accountForm">
+
+        <div class="field">
+          <label for="accountTitle">ACCOUNT TITLE</label>
+          <input
+            id="accountTitle"
+            type="text"
+            maxlength="100"
+            required
+            placeholder="PUBG Account"
+          >
+        </div>
+
+        <div class="field">
+          <label for="accountDescription">DESCRIPTION</label>
+          <textarea
+            id="accountDescription"
+            maxlength="3000"
+            required
+            placeholder="Write the account details here..."
+          ></textarea>
+        </div>
+
+        <div class="form-grid">
+
+          <div class="field">
+            <label for="accountPrice">PRICE (USD)</label>
+            <input
+              id="accountPrice"
+              type="number"
+              min="0"
+              step="0.01"
+              required
+              placeholder="Example: 50"
+            >
+          </div>
+
+          <div class="field">
+            <label for="accountStatus">STATUS</label>
+            <select id="accountStatus">
+              <option value="available">Available</option>
+              <option value="sold">Sold</option>
+            </select>
+          </div>
+
+        </div>
+
+        <div class="field">
+          <label for="accountVideo">VIDEO URL (OPTIONAL)</label>
+          <input
+            id="accountVideo"
+            type="url"
+            placeholder="Paste your Uploadcare video URL"
+          >
+          <small>
+            Open Uploadcare using the button above, upload your video, then paste its CDN URL here.
+          </small>
+        </div>
+
+        <div class="field">
+          <label for="accountThumbnail">THUMBNAIL IMAGE URL (OPTIONAL)</label>
+          <input
+            id="accountThumbnail"
+            type="url"
+            placeholder="Paste your Uploadcare image URL"
+          >
+          <small>
+            Upload a picture to Uploadcare and paste its image URL here. This picture appears on the account card before opening the video.
+          </small>
+        </div>
+
+        <div class="form-actions">
+          <button class="primary-button" id="saveButton" type="submit">
+            ADD ACCOUNT
+          </button>
+
+          <button
+            class="secondary-button"
+            id="cancelEditButton"
+            type="button"
+            hidden
+          >
+            CANCEL EDIT
+          </button>
+        </div>
+
+        <div class="message" id="formMessage" role="status"></div>
+
+      </form>
+    </section>
+
+    <section class="panel">
+      <h2>ALL ACCOUNTS</h2>
+      <p class="muted" id="accountCount">Loading accounts...</p>
+      <div class="account-list" id="accountList" style="margin-top:16px"></div>
+    </section>
+
+  </div>
+
+</main>
+
+<script type="module">
+
+// ==========================================
+// FIREBASE CONFIGURATION - UNCHANGED
+// ==========================================
+
+const firebaseConfig = {
+  apiKey: "AIzaSyA8o1-dnkcTf1k1eWRbNYOQHb-RjR2i_yo",
+  authDomain: "f5-store.firebaseapp.com",
+  projectId: "f5-store",
+  storageBucket: "f5-store.firebasestorage.app",
+  messagingSenderId: "494735190451",
+  appId: "1:494735190451:web:af05e91c97d723e2d4c3c6",
+  measurementId: "G-WM9ZFDNZKQ"
+};
+
+const ADMIN_UID = "Rxr5eOiDdcT2JVTSf2vfEvCQSmJ3";
+const FIREBASE_VERSION = "10.12.2";
+const FIREBASE_BASE =
+  `https://www.gstatic.com/firebasejs/${FIREBASE_VERSION}`;
+
+const $ = (id) => document.getElementById(id);
+
+let appModule;
+let authModule;
+let firestoreModule;
+let auth;
+let db;
+let editingAccountId = null;
+let accountsCache = [];
+
+// ==========================================
+// UI MESSAGES
+// ==========================================
+
+function showMessage(element, message, type) {
+  element.textContent = message;
+  element.className = `message ${type}`;
+}
+
+function clearMessage(element) {
+  element.textContent = "";
+  element.className = "message";
+}
+
+// ==========================================
+// FIREBASE INITIALIZATION
+// ==========================================
+
+async function initializeFirebase() {
+  try {
+    const modules = await Promise.all([
+      import(`${FIREBASE_BASE}/firebase-app.js`),
+      import(`${FIREBASE_BASE}/firebase-auth.js`),
+      import(`${FIREBASE_BASE}/firebase-firestore.js`)
+    ]);
+
+    [appModule, authModule, firestoreModule] = modules;
+
+    const existingApps = appModule.getApps();
+
+    const firebaseApp = existingApps.length
+      ? appModule.getApp()
+      : appModule.initializeApp(firebaseConfig);
+
+    auth = authModule.getAuth(firebaseApp);
+    db = firestoreModule.getFirestore(firebaseApp);
+
+    authModule.onAuthStateChanged(auth, (user) => {
+      if (!user) {
+        showLogin();
+        return;
+      }
+
+      if (user.uid !== ADMIN_UID) {
+        authModule.signOut(auth).catch(console.error);
+        showLogin();
+
+        showMessage(
+          $("loginStatus"),
+          "Access denied. This account is not the store administrator.",
+          "error"
+        );
+
+        return;
+      }
+
+      showDashboard();
+      loadAllAccounts();
+    });
+
+  } catch (error) {
+    console.error("Firebase initialization error:", error);
+
+    showMessage(
+      $("loginStatus"),
+      `Firebase connection failed: ${error.message || error}`,
+      "error"
+    );
+  }
+}
+
+// ==========================================
+// SHOW LOGIN / DASHBOARD
+// ==========================================
+
+function showLogin() {
+  $("loginPanel").style.display = "block";
+  $("dashboard").style.display = "none";
+  $("logoutButton").hidden = true;
+}
+
+function showDashboard() {
+  $("loginPanel").style.display = "none";
+  $("dashboard").style.display = "block";
+  $("logoutButton").hidden = false;
+}
+
+// ==========================================
+// LOGIN
+// ==========================================
+
+$("loginForm").addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const email = $("adminEmail").value.trim();
+  const password = $("adminPassword").value;
+  const button = $("loginButton");
+
+  button.disabled = true;
+  button.textContent = "CONNECTING...";
+  clearMessage($("loginStatus"));
+
+  try {
+    const credential =
+      await authModule.signInWithEmailAndPassword(
+        auth,
+        email,
+        password
+      );
+
+    if (credential.user.uid !== ADMIN_UID) {
+      await authModule.signOut(auth);
+
+      showMessage(
+        $("loginStatus"),
+        "Access denied. This account is not the store administrator.",
+        "error"
+      );
+    }
+
+  } catch (error) {
+    const messages = {
+      "auth/invalid-credential": "Email or password is incorrect.",
+      "auth/invalid-email": "Please enter a valid email address.",
+      "auth/too-many-requests": "Too many attempts. Please wait and try again.",
+      "auth/unauthorized-domain": "This website domain is not authorized in Firebase.",
+      "auth/network-request-failed": "Network error. Check your internet connection."
+    };
+
+    showMessage(
+      $("loginStatus"),
+      messages[error.code] || `Login failed: ${error.message}`,
+      "error"
+    );
+
+  } finally {
+    button.disabled = false;
+    button.textContent = "SIGN IN";
+  }
+});
+
+// ==========================================
+// LOGOUT
+// ==========================================
+
+$("logoutButton").addEventListener("click", async () => {
+  try {
+    await authModule.signOut(auth);
+    resetForm();
+  } catch (error) {
+    alert("Could not sign out: " + error.message);
+  }
+});
+
+// ==========================================
+// LOAD ALL FIRESTORE ACCOUNTS
+// ==========================================
+
+async function loadAllAccounts() {
+  const list = $("accountList");
+  const count = $("accountCount");
+
+  list.textContent = "Loading accounts...";
+  count.textContent = "Loading accounts...";
+
+  try {
+    const snapshot = await firestoreModule.getDocs(
+      firestoreModule.collection(db, "accounts")
+    );
+
+    accountsCache = [];
+
+    snapshot.forEach((doc) => {
+      accountsCache.push({
+        id: doc.id,
+        ...doc.data()
+      });
+    });
+
+    accountsCache.sort((a, b) => {
+      const dateA = a.createdAt?.toMillis
+        ? a.createdAt.toMillis()
+        : 0;
+
+      const dateB = b.createdAt?.toMillis
+        ? b.createdAt.toMillis()
+        : 0;
+
+      return dateB - dateA;
+    });
+
+    renderAccounts();
+
+  } catch (error) {
+    console.error("Could not load accounts:", error);
+    count.textContent = "Could not load accounts.";
+    list.textContent = error.message;
+  }
+}
+
+// ==========================================
+// RENDER ACCOUNT LIST
+// ==========================================
+
+function renderAccounts() {
+  const list = $("accountList");
+  const count = $("accountCount");
+
+  list.innerHTML = "";
+
+  count.textContent =
+    `${accountsCache.length} account(s) in your database.`;
+
+  if (accountsCache.length === 0) {
+    list.textContent = "No accounts have been added yet.";
+    return;
+  }
+
+  accountsCache.forEach((account) => {
+    const card = document.createElement("article");
+    card.className = "admin-account";
+
+    const top = document.createElement("div");
+    top.className = "admin-account-top";
+
+    const title = document.createElement("h3");
+    title.textContent = account.title || "Untitled account";
+
+    const status = document.createElement("span");
+    status.className =
+      `status ${account.status === "sold" ? "sold" : "available"}`;
+    status.textContent =
+      account.status === "sold" ? "SOLD" : "AVAILABLE";
+
+    top.append(title, status);
+
+    const description = document.createElement("p");
+    description.textContent =
+      account.description || "No description";
+
+    const price = document.createElement("div");
+    price.className = "account-price";
+    price.textContent =
+      account.price === undefined || account.price === null
+        ? "Price not set"
+        : `$${account.price}`;
+
+    const actions = document.createElement("div");
+    actions.className = "account-actions";
+
+    const editButton = document.createElement("button");
+    editButton.className = "secondary-button";
+    editButton.type = "button";
+    editButton.textContent = "EDIT";
+    editButton.addEventListener("click", () => {
+      startEdit(account.id);
+    });
+
+    const statusButton = document.createElement("button");
+    statusButton.className = "secondary-button";
+    statusButton.type = "button";
+    statusButton.textContent =
+      account.status === "sold"
+        ? "MARK AVAILABLE"
+        : "MARK SOLD";
+
+    statusButton.addEventListener("click", () => {
+      changeAccountStatus(
+        account.id,
+        account.status === "sold" ? "available" : "sold"
+      );
+    });
+
+    const deleteButton = document.createElement("button");
+    deleteButton.className = "delete-button";
+    deleteButton.type = "button";
+    deleteButton.textContent = "DELETE";
+    deleteButton.addEventListener("click", () => {
+      deleteAccount(account.id, account.title || "this account");
+    });
+
+    actions.append(editButton, statusButton, deleteButton);
+
+    card.append(top, description, price, actions);
+    list.appendChild(card);
+  });
+}
+
+// ==========================================
+// ADD OR UPDATE ACCOUNT
+// ==========================================
+
+$("accountForm").addEventListener("submit", async (event) => {
+  event.preventDefault();
+
+  const title = $("accountTitle").value.trim();
+  const description = $("accountDescription").value.trim();
+  const priceValue = $("accountPrice").value;
+  const videoUrl = $("accountVideo").value.trim();
+  const thumbnailUrl = $("accountThumbnail").value.trim();
+  const status = $("accountStatus").value;
+
+  const price = Number(priceValue);
+
+  if (!title || !description || priceValue === "" || !Number.isFinite(price) || price < 0) {
+    showMessage(
+      $("formMessage"),
+      "Please enter a title, description and a valid price.",
+      "error"
+    );
+    return;
+  }
+
+  // Validate optional URLs
+  for (const [label, value] of [
+    ["Video", videoUrl],
+    ["Thumbnail", thumbnailUrl]
+  ]) {
+    if (!value) continue;
+
+    try {
+      const parsedUrl = new URL(value);
+
+      if (parsedUrl.protocol !== "https:" && parsedUrl.protocol !== "http:") {
+        throw new Error("Invalid URL protocol");
+      }
+    } catch {
+      showMessage(
+        $("formMessage"),
+        `Please enter a valid ${label.toLowerCase()} URL or leave it empty.`,
+        "error"
+      );
+      return;
+    }
+  }
+
+  const saveButton = $("saveButton");
+
+  saveButton.disabled = true;
+  saveButton.textContent = editingAccountId
+    ? "SAVING CHANGES..."
+    : "ADDING ACCOUNT...";
+
+  const accountData = {
+    title,
+    description,
+    price,
+    videoUrl,
+    thumbnailUrl,
+    status
+  };
+
+  try {
+    if (editingAccountId) {
+      await firestoreModule.updateDoc(
+        firestoreModule.doc(db, "accounts", editingAccountId),
+        accountData
+      );
+
+      showMessage(
+        $("formMessage"),
+        "Account updated successfully.",
+        "success"
+      );
+
+    } else {
+      await firestoreModule.addDoc(
+        firestoreModule.collection(db, "accounts"),
+        {
+          ...accountData,
+          createdAt: firestoreModule.serverTimestamp()
+        }
+      );
+
+      showMessage(
+        $("formMessage"),
+        "Account added successfully.",
+        "success"
+      );
+    }
+
+    resetForm();
+    await loadAllAccounts();
+
+  } catch (error) {
+    console.error("Account save error:", error);
+
+    showMessage(
+      $("formMessage"),
+      `Could not save account: ${error.message}`,
+      "error"
+    );
+
+  } finally {
+    saveButton.disabled = false;
+    saveButton.textContent = editingAccountId
+      ? "SAVE CHANGES"
+      : "ADD ACCOUNT";
+  }
+});
+
+// ==========================================
+// EDIT ACCOUNT
+// ==========================================
+
+function startEdit(accountId) {
+  const account = accountsCache.find((item) => item.id === accountId);
+
+  if (!account) return;
+
+  editingAccountId = accountId;
+
+  $("accountTitle").value = account.title || "";
+  $("accountDescription").value = account.description || "";
+  $("accountPrice").value = account.price ?? "";
+  $("accountVideo").value = account.videoUrl || "";
+  $("accountThumbnail").value = account.thumbnailUrl || "";
+  $("accountStatus").value =
+    account.status === "sold" ? "sold" : "available";
+
+  $("formHeading").textContent = "EDIT ACCOUNT";
+  $("saveButton").textContent = "SAVE CHANGES";
+  $("cancelEditButton").hidden = false;
+
+  clearMessage($("formMessage"));
+
+  window.scrollTo({
+    top: 0,
+    behavior: "smooth"
+  });
+}
+
+// ==========================================
+// RESET FORM
+// ==========================================
+
+function resetForm() {
+  editingAccountId = null;
+
+  $("accountForm").reset();
+
+  $("accountStatus").value = "available";
+
+  $("formHeading").textContent = "ADD NEW ACCOUNT";
+  $("saveButton").textContent = "ADD ACCOUNT";
+  $("cancelEditButton").hidden = true;
+}
+
+$("cancelEditButton").addEventListener("click", () => {
+  resetForm();
+  clearMessage($("formMessage"));
+});
+
+// ==========================================
+// CHANGE ACCOUNT STATUS
+// ==========================================
+
+async function changeAccountStatus(accountId, newStatus) {
+  try {
+    await firestoreModule.updateDoc(
+      firestoreModule.doc(db, "accounts", accountId),
+      { status: newStatus }
+    );
+
+    await loadAllAccounts();
+
+  } catch (error) {
+    console.error("Status update error:", error);
+    alert("Could not update account status: " + error.message);
+  }
+}
+
+// ==========================================
+// DELETE ACCOUNT
+// ==========================================
+
+async function deleteAccount(accountId, accountTitle) {
+  const confirmed = window.confirm(
+    `Are you sure you want to delete "${accountTitle}"? This cannot be undone.`
+  );
+
+  if (!confirmed) return;
+
+  try {
+    await firestoreModule.deleteDoc(
+      firestoreModule.doc(db, "accounts", accountId)
+    );
+
+    if (editingAccountId === accountId) {
+      resetForm();
+    }
+
+    await loadAllAccounts();
+
+  } catch (error) {
+    console.error("Delete account error:", error);
+    alert("Could not delete account: " + error.message);
+  }
+}
+
+// ==========================================
+// START
+// ==========================================
+
+initializeFirebase();
+
+</script>
+
+</body>
+</html>
