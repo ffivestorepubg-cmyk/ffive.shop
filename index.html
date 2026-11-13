@@ -2,2238 +2,2509 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
-  >
-  <meta name="theme-color" content="#0a0c0b">
-
-  <title>
-    F5 STORE | PUBG Mobile Accounts & UC
-  </title>
-
-  <meta
-    name="description"
-    content="F5 STORE - PUBG Mobile accounts and UC top-ups. Browse available accounts, watch account videos and order directly on WhatsApp."
-  >
-
-  <meta
-    property="og:type"
-    content="website"
-  >
-
-  <meta
-    property="og:title"
-    content="F5 STORE | PUBG Mobile"
-  >
-
-  <meta
-    property="og:description"
-    content="Discover PUBG Mobile accounts and UC packages at F5 STORE."
-  >
-
-  <meta
-    property="og:url"
-    content="https://ffive.store/"
-  >
-
-  <meta
-    name="twitter:card"
-    content="summary_large_image"
-  >
-
-  <link
-    rel="canonical"
-    href="https://ffive.store/"
-  >
-
-  <link
-    rel="preconnect"
-    href="https://fonts.googleapis.com"
-  >
-
-  <link
-    rel="preconnect"
-    href="https://fonts.gstatic.com"
-    crossorigin
-  >
-
-  <link
-    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap"
-    rel="stylesheet"
-  >
-
-  <style>
-
-    /* ========================================
-       F5 STORE - PUBG THEME
-    ======================================== */
-
-    :root {
-      --bg: #090c0b;
-      --bg-soft: #111714;
-      --panel: #171e19;
-      --panel-2: #20291f;
-      --panel-3: #283326;
-
-      --gold: #f2ba3b;
-      --gold-light: #ffda78;
-      --gold-dark: #b67b15;
-
-      --green: #8ca66b;
-      --green-light: #b3d48a;
-
-      --white: #f8f8f1;
-      --muted: #a4aca2;
-
-      --border: rgba(242,186,59,.17);
-
-      --red: #f46d66;
-
-      --radius: 15px;
-      --shadow: 0 18px 50px rgba(0,0,0,.35);
-    }
-
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      min-height: 100vh;
-      background: var(--bg);
-      color: var(--white);
-      font-family: "Inter", sans-serif;
-      overflow-x: hidden;
-    }
-
-    body.modal-open {
-      overflow: hidden;
-    }
-
-    body::before {
-      content: "";
-      position: fixed;
-      inset: 0;
-      pointer-events: none;
-      z-index: -1;
-
-      background:
-        radial-gradient(
-          circle at 20% 0%,
-          rgba(115,141,66,.12),
-          transparent 40%
-        ),
-        radial-gradient(
-          circle at 90% 30%,
-          rgba(242,186,59,.055),
-          transparent 35%
-        );
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
-    }
-
-    button,
-    input {
-      font: inherit;
-    }
-
-    button {
-      cursor: pointer;
-    }
-
-    img,
-    video {
-      max-width: 100%;
-    }
-
-    button:focus-visible,
-    a:focus-visible,
-    input:focus-visible {
-      outline: 2px solid var(--gold);
-      outline-offset: 3px;
-    }
-
-    .container {
-      width: min(1200px, calc(100% - 36px));
-      margin: 0 auto;
-    }
-
-    .section {
-      padding: 90px 0;
-    }
-
-    .section-heading {
-      text-align: center;
-      margin-bottom: 38px;
-    }
-
-    .section-tag {
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      color: var(--gold);
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: 3px;
-      text-transform: uppercase;
-      margin-bottom: 12px;
-    }
-
-    .section-heading h2 {
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: clamp(38px, 6vw, 62px);
-      font-weight: 900;
-      line-height: 1;
-      text-transform: uppercase;
-    }
-
-    .section-heading h2 span {
-      color: var(--gold);
-    }
-
-    .section-heading p {
-      max-width: 650px;
-      margin: 15px auto 0;
-      color: var(--muted);
-      font-size: 14px;
-      line-height: 1.8;
-    }
-
-    /* ========================================
-       BUTTONS
-    ======================================== */
-
-    .btn {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 9px;
-
-      min-height: 48px;
-      padding: 13px 24px;
-
-      border: 1px solid transparent;
-      border-radius: 8px;
-
-      font-size: 12px;
-      font-weight: 800;
-      letter-spacing: .6px;
-      text-align: center;
-
-      transition:
-        transform .2s,
-        background .2s,
-        border-color .2s;
-    }
-
-    .btn:hover {
-      transform: translateY(-2px);
-    }
-
-    .btn-gold {
-      color: #17150e;
-      background: linear-gradient(
-        120deg,
-        var(--gold-light),
-        var(--gold)
-      );
-
-      box-shadow:
-        0 8px 24px rgba(242,186,59,.15);
-    }
-
-    .btn-outline {
-      background: rgba(0,0,0,.25);
-      color: var(--white);
-      border-color: rgba(242,186,59,.35);
-    }
-
-    .btn-outline:hover {
-      border-color: var(--gold);
-    }
-
-    .btn-green {
-      background: #258e55;
-      color: white;
-    }
-
-    .btn-green:hover {
-      background: #2ba965;
-    }
-
-    /* ========================================
-       HEADER
-    ======================================== */
-
-    .site-header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-
-      background: rgba(9,12,11,.95);
-      backdrop-filter: blur(18px);
-
-      border-bottom:
-        1px solid rgba(242,186,59,.14);
-    }
-
-    .header-inner {
-      min-height: 76px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 20px;
-    }
-
-    .brand {
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-    }
-
-    .brand-mark {
-      display: grid;
-      place-items: center;
-
-      width: 44px;
-      height: 44px;
-
-      border: 2px solid var(--gold);
-      border-radius: 9px;
-
-      color: var(--gold);
-      background: rgba(242,186,59,.07);
-
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: 25px;
-      font-weight: 900;
-    }
-
-    .brand-name {
-      display: flex;
-      flex-direction: column;
-      line-height: 1;
-    }
-
-    .brand-name strong {
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: 26px;
-      font-weight: 900;
-      letter-spacing: 1px;
-    }
-
-    .brand-name strong span {
-      color: var(--gold);
-    }
-
-    .brand-name small {
-      margin-top: 4px;
-      color: var(--muted);
-      font-size: 8px;
-      letter-spacing: 2.4px;
-      font-weight: 800;
-    }
-
-    .nav {
-      display: flex;
-      align-items: center;
-      gap: 29px;
-    }
-
-    .nav a {
-      color: #d6d9d1;
-      font-size: 11px;
-      font-weight: 800;
-      letter-spacing: .7px;
-      transition: color .2s;
-    }
-
-    .nav a:hover {
-      color: var(--gold);
-    }
-
-    .header-actions {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-    }
-
-    .admin-trigger {
-      padding: 10px 15px;
-
-      border: 1px solid rgba(242,186,59,.28);
-      border-radius: 7px;
-
-      color: var(--gold);
-      background: rgba(242,186,59,.06);
-
-      font-size: 10px;
-      font-weight: 800;
-    }
-
-    .menu-toggle {
-      display: none;
-
-      width: 42px;
-      height: 42px;
-
-      border: 1px solid var(--border);
-      border-radius: 8px;
-
-      background: var(--panel);
-      color: var(--gold);
-      font-size: 23px;
-    }
-
-    /* ========================================
-       HERO
-    ======================================== */
-
-    .hero {
-      position: relative;
-      display: flex;
-      align-items: center;
-
-      min-height: 650px;
-      padding: 90px 0;
-
-      overflow: hidden;
-
-      background:
-        linear-gradient(
-          90deg,
-          rgba(7,10,8,.98) 0%,
-          rgba(7,10,8,.94) 43%,
-          rgba(7,10,8,.72) 72%,
-          rgba(7,10,8,.8) 100%
-        ),
-        radial-gradient(
-          ellipse at 80% 40%,
-          #3e4c2a 0%,
-          #182117 35%,
-          #090c0b 75%
-        );
-    }
-
-    .hero::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-
-      opacity: .19;
-
-      background-image:
-        linear-gradient(
-          rgba(255,255,255,.04) 1px,
-          transparent 1px
-        ),
-        linear-gradient(
-          90deg,
-          rgba(255,255,255,.04) 1px,
-          transparent 1px
-        );
-
-      background-size: 45px 45px;
-
-      mask-image:
-        linear-gradient(
-          90deg,
-          transparent,
-          black
-        );
-
-      pointer-events: none;
-    }
-
-    .hero::after {
-      content: "F5";
-      position: absolute;
-      right: -30px;
-      bottom: -120px;
-
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: clamp(250px, 45vw, 650px);
-      font-weight: 900;
-      line-height: 1;
-
-      color: rgba(242,186,59,.035);
-
-      pointer-events: none;
-    }
-
-    .hero-content {
-      position: relative;
-      z-index: 1;
-      max-width: 800px;
-    }
-
-    .hero-badge {
-      display: inline-flex;
-      align-items: center;
-      gap: 9px;
-
-      padding: 10px 15px;
-      margin-bottom: 26px;
-
-      border: 1px solid rgba(242,186,59,.3);
-      border-radius: 50px;
-
-      color: var(--gold);
-      background: rgba(242,186,59,.07);
-
-      font-size: 10px;
-      font-weight: 800;
-      letter-spacing: 1.5px;
-    }
-
-    .hero-badge::before {
-      content: "";
-      width: 7px;
-      height: 7px;
-      border-radius: 50%;
-      background: var(--gold);
-      box-shadow: 0 0 12px var(--gold);
-    }
-
-    .hero h1 {
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: clamp(65px, 11vw, 145px);
-      font-weight: 900;
-      line-height: .85;
-      letter-spacing: -1.5px;
-      text-transform: uppercase;
-    }
-
-    .hero h1 span {
-      color: var(--gold);
-    }
-
-    .hero-subtitle {
-      margin-top: 23px;
-
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: clamp(23px, 4vw, 39px);
-      font-weight: 700;
-      letter-spacing: 2px;
-      text-transform: uppercase;
-    }
-
-    .hero-description {
-      max-width: 600px;
-      margin-top: 18px;
-
-      color: #b5bcb0;
-      font-size: 14px;
-      line-height: 1.9;
-    }
-
-    .hero-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 13px;
-      margin-top: 30px;
-    }
-
-    .hero-stats {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 35px;
-
-      margin-top: 48px;
-      padding-top: 25px;
-
-      border-top: 1px solid var(--border);
-    }
-
-    .hero-stat strong {
-      display: block;
-
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: 29px;
-      font-weight: 900;
-      color: var(--gold);
-    }
-
-    .hero-stat span {
-      display: block;
-      margin-top: 3px;
-
-      color: var(--muted);
-      font-size: 10px;
-      font-weight: 700;
-      letter-spacing: 1px;
-    }
-
-    /* ========================================
-       FEATURES
-    ======================================== */
-
-    .features {
-      position: relative;
-      z-index: 2;
-      margin-top: -40px;
-    }
-
-    .features-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 16px;
-    }
-
-    .feature {
-      padding: 26px;
-
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-
-      background:
-        linear-gradient(
-          145deg,
-          #1d281d,
-          #101711
-        );
-
-      box-shadow: var(--shadow);
-    }
-
-    .feature-icon {
-      display: grid;
-      place-items: center;
-
-      width: 53px;
-      height: 53px;
-      margin-bottom: 17px;
-
-      border-radius: 12px;
-
-      background: rgba(242,186,59,.1);
-      color: var(--gold);
-      font-size: 26px;
-    }
-
-    .feature h3 {
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: 23px;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
-
-    .feature p {
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.8;
-    }
-
-    /* ========================================
-       ACCOUNT CARDS
-    ======================================== */
-
-    .accounts-section {
-      background:
-        linear-gradient(
-          180deg,
-          transparent,
-          rgba(33,47,29,.18),
-          transparent
-        );
-    }
-
-    .accounts-grid {
-      display: grid;
-      grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-
-      gap: 22px;
-    }
-
-    .account-card {
-      min-width: 0;
-      overflow: hidden;
-
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-
-      background:
-        linear-gradient(
-          160deg,
-          #1a241c,
-          #111714
-        );
-
-      box-shadow: 0 12px 35px rgba(0,0,0,.22);
-
-      cursor: pointer;
-
-      transition:
-        transform .25s,
-        border-color .25s,
-        box-shadow .25s;
-    }
-
-    .account-card:hover {
-      transform: translateY(-6px);
-      border-color: rgba(242,186,59,.5);
-      box-shadow: 0 20px 45px rgba(0,0,0,.35);
-    }
-
-    .account-media {
-      width: 100%;
-      aspect-ratio: 16 / 10;
-      position: relative;
-      overflow: hidden;
-
-      background:
-        radial-gradient(
-          circle,
-          #34412b,
-          #111811
-        );
-    }
-
-    .account-media::after {
-      content: "F5 STORE";
-      position: absolute;
-      top: 12px;
-      left: 12px;
-
-      padding: 6px 10px;
-
-      border: 1px solid rgba(242,186,59,.3);
-      border-radius: 5px;
-
-      color: var(--gold);
-      background: rgba(0,0,0,.7);
-
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: 12px;
-      font-weight: 900;
-      letter-spacing: 1px;
-    }
-
-    .account-video-preview,
-    .account-poster {
-      display: block;
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-    }
-
-    .account-video-placeholder {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      width: 100%;
-      height: 100%;
-
-      color: rgba(242,186,59,.4);
-
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: 30px;
-      font-weight: 900;
-      letter-spacing: 3px;
-
-      text-align: center;
-    }
-
-    .account-info {
-      padding: 21px;
-    }
-
-    .account-info h3 {
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: 27px;
-      font-weight: 800;
-      line-height: 1.1;
-      overflow-wrap: anywhere;
-    }
-
-    .account-description-preview {
-      margin-top: 10px;
-
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.7;
-
-      display: -webkit-box;
-      -webkit-box-orient: vertical;
-      -webkit-line-clamp: 3;
-      overflow: hidden;
-
-      min-height: 61px;
-      white-space: pre-line;
-    }
-
-    .account-price {
-      margin-top: 16px;
-
-      color: var(--gold);
-
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: 31px;
-      font-weight: 900;
-    }
-
-    .account-buy {
-      display: block;
-
-      width: 100%;
-      min-height: 44px;
-      margin-top: 14px;
-
-      border: 0;
-      border-radius: 7px;
-
-      background: linear-gradient(
-        120deg,
-        var(--gold-light),
-        var(--gold)
-      );
-
-      color: #17150e;
-      font-size: 11px;
-      font-weight: 900;
-      letter-spacing: .6px;
-    }
-
-    .account-buy:hover {
-      filter: brightness(1.07);
-    }
-
-    .accounts-message {
-      padding: 32px 20px;
-      margin-top: 20px;
-
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-
-      background: var(--panel);
-      color: var(--muted);
-
-      text-align: center;
-      font-size: 14px;
-      line-height: 1.8;
-    }
-
-    .accounts-message[hidden] {
-      display: none !important;
-    }
-
-    /* ========================================
-       UC PACKAGES
-    ======================================== */
-
-    .uc-section {
-      background:
-        linear-gradient(
-          180deg,
-          #111810,
-          #0b100c
-        );
-
-      border-top: 1px solid rgba(242,186,59,.07);
-      border-bottom: 1px solid rgba(242,186,59,.07);
-    }
-
-    .packages-grid {
-      display: grid;
-      grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-
-      gap: 20px;
-    }
-
-    .package-card {
-      position: relative;
-
-      padding: 28px 22px;
-
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-
-      background:
-        linear-gradient(
-          145deg,
-          #20291e,
-          #121913
-        );
-
-      text-align: center;
-      cursor: pointer;
-
-      transition:
-        transform .2s,
-        border-color .2s;
-    }
-
-    .package-card:hover {
-      transform: translateY(-5px);
-      border-color: var(--gold);
-    }
-
-    .package-card.featured {
-      border-color: rgba(242,186,59,.65);
-
-      background:
-        linear-gradient(
-          145deg,
-          #302b19,
-          #191c13
-        );
-    }
-
-    .package-badge {
-      position: absolute;
-      top: -12px;
-      left: 50%;
-      transform: translateX(-50%);
-
-      padding: 6px 13px;
-
-      border-radius: 30px;
-
-      background: var(--gold);
-      color: #15130d;
-
-      font-size: 9px;
-      font-weight: 900;
-      letter-spacing: .8px;
-
-      white-space: nowrap;
-    }
-
-    .uc-icon {
-      display: grid;
-      place-items: center;
-
-      width: 74px;
-      height: 74px;
-      margin: 0 auto 16px;
-
-      border: 2px solid rgba(242,186,59,.5);
-      border-radius: 50%;
-
-      background:
-        radial-gradient(
-          circle,
-          #53431b,
-          #211e12
-        );
-
-      color: var(--gold-light);
-
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: 27px;
-      font-weight: 900;
-    }
-
-    .uc-amount {
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: 42px;
-      font-weight: 900;
-      line-height: 1;
-    }
-
-    .uc-amount span {
-      color: var(--gold);
-      font-size: 23px;
-    }
-
-    .package-card p {
-      margin-top: 8px;
-      color: var(--muted);
-      font-size: 11px;
-    }
-
-    .uc-price {
-      margin: 19px 0;
-
-      color: var(--gold);
-
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: 31px;
-      font-weight: 900;
-    }
-
-    .package-order {
-      display: block;
-
-      width: 100%;
-      padding: 13px;
-
-      border: 1px solid rgba(242,186,59,.4);
-      border-radius: 7px;
-
-      background: rgba(242,186,59,.08);
-      color: var(--gold);
-
-      font-size: 11px;
-      font-weight: 900;
-    }
-
-    .package-card:hover .package-order {
-      background: var(--gold);
-      color: #15130d;
-    }
-
-    /* ========================================
-       HOW IT WORKS
-    ======================================== */
-
-    .steps-grid {
-      display: grid;
-      grid-template-columns:
-        repeat(3, minmax(0, 1fr));
-
-      gap: 20px;
-    }
-
-    .step {
-      position: relative;
-      padding: 30px;
-
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-
-      background: var(--panel);
-    }
-
-    .step-number {
-      color: rgba(242,186,59,.25);
-
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: 76px;
-      font-weight: 900;
-      line-height: .8;
-    }
-
-    .step h3 {
-      margin-top: 22px;
-
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: 26px;
-      font-weight: 800;
-    }
-
-    .step p {
-      margin-top: 10px;
-
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.8;
-    }
-
-    /* ========================================
-       CONTACT
-    ======================================== */
-
-    .contact-section {
-      padding: 65px 0;
-
-      background:
-        radial-gradient(
-          ellipse at center,
-          rgba(242,186,59,.1),
-          transparent 70%
-        );
-    }
-
-    .contact-box {
-      padding: 50px 25px;
-
-      border: 1px solid rgba(242,186,59,.3);
-      border-radius: 20px;
-
-      background:
-        linear-gradient(
-          145deg,
-          #252719,
-          #111811
-        );
-
-      text-align: center;
-    }
-
-    .contact-box h2 {
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: clamp(35px, 6vw, 58px);
-      font-weight: 900;
-      text-transform: uppercase;
-    }
-
-    .contact-box h2 span {
-      color: var(--gold);
-    }
-
-    .contact-box p {
-      max-width: 560px;
-      margin: 15px auto 25px;
-
-      color: var(--muted);
-      font-size: 13px;
-      line-height: 1.8;
-    }
-
-    /* ========================================
-       FOOTER
-    ======================================== */
-
-    footer {
-      padding: 42px 0 25px;
-
-      border-top: 1px solid var(--border);
-      background: #080b09;
-    }
-
-    .footer-top {
-      display: flex;
-      justify-content: space-between;
-      align-items: flex-start;
-      gap: 25px;
-      flex-wrap: wrap;
-    }
-
-    .footer-description {
-      max-width: 340px;
-      margin-top: 12px;
-
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.8;
-    }
-
-    .footer-links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 18px;
-    }
-
-    .footer-links a {
-      color: var(--muted);
-      font-size: 12px;
-    }
-
-    .footer-links a:hover {
-      color: var(--gold);
-    }
-
-    .footer-bottom {
-      margin-top: 35px;
-      padding-top: 20px;
-
-      border-top: 1px solid var(--border);
-
-      color: #7c877d;
-      font-size: 11px;
-      text-align: center;
-    }
-
-    /* ========================================
-       FLOATING WHATSAPP
-    ======================================== */
-
-    .floating-whatsapp {
-      position: fixed;
-      right: 20px;
-      bottom: 20px;
-      z-index: 90;
-
-      display: flex;
-      align-items: center;
-      justify-content: center;
-
-      width: 60px;
-      height: 60px;
-
-      border: 2px solid rgba(255,255,255,.15);
-      border-radius: 50%;
-
-      background: #1caa5c;
-      color: white;
-
-      box-shadow:
-        0 10px 30px rgba(0,0,0,.4);
-
-      font-size: 28px;
-
-      transition: transform .2s;
-    }
-
-    .floating-whatsapp:hover {
-      transform: scale(1.08);
-    }
-
-    /* ========================================
-       MODALS
-    ======================================== */
-
-    .modal {
-      position: fixed;
-      inset: 0;
-      z-index: 200;
-
-      display: none;
-      align-items: center;
-      justify-content: center;
-
-      padding: 18px;
-
-      background: rgba(0,0,0,.83);
-      backdrop-filter: blur(10px);
-    }
-
-    .modal.open {
-      display: flex;
-    }
-
-    .modal-content {
-      position: relative;
-
-      width: min(100%, 460px);
-      max-height: calc(100vh - 36px);
-
-      overflow-y: auto;
-
-      padding: 28px;
-
-      border: 1px solid rgba(242,186,59,.32);
-      border-radius: 16px;
-
-      background: #151c17;
-      box-shadow: 0 25px 70px rgba(0,0,0,.5);
-    }
-
-    .modal-close {
-      position: absolute;
-      top: 13px;
-      right: 13px;
-
-      display: grid;
-      place-items: center;
-
-      width: 36px;
-      height: 36px;
-
-      border: 1px solid var(--border);
-      border-radius: 8px;
-
-      background: rgba(255,255,255,.05);
-      color: white;
-
-      font-size: 22px;
-      line-height: 1;
-    }
-
-    .modal-title {
-      margin-bottom: 10px;
-      padding-right: 35px;
-
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: 32px;
-      font-weight: 900;
-      text-transform: uppercase;
-    }
-
-    .modal-title span {
-      color: var(--gold);
-    }
-
-    .modal-description {
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.8;
-      margin-bottom: 20px;
-    }
-
-    .form-field {
-      margin-bottom: 15px;
-    }
-
-    .form-field label {
-      display: block;
-      margin-bottom: 7px;
-
-      color: #d8e0d3;
-      font-size: 11px;
-      font-weight: 800;
-    }
-
-    .form-field input {
-      display: block;
-
-      width: 100%;
-      min-height: 46px;
-      padding: 12px;
-
-      border: 1px solid rgba(242,186,59,.2);
-      border-radius: 8px;
-
-      background: #0b110d;
-      color: white;
-
-      outline: none;
-    }
-
-    .form-field input:focus {
-      border-color: var(--gold);
-    }
-
-    .form-submit {
-      width: 100%;
-      margin-top: 5px;
-    }
-
-    .login-status {
-      margin-top: 15px;
-
-      color: var(--muted);
-      font-size: 12px;
-      line-height: 1.7;
-      overflow-wrap: anywhere;
-    }
-
-    .login-status.error {
-      color: #ff8e88;
-    }
-
-    .login-status.success {
-      color: #9fdda0;
-    }
-
-    .admin-session {
-      margin-top: 18px;
-      padding: 13px;
-
-      border: 1px solid var(--border);
-      border-radius: 9px;
-
-      background: rgba(242,186,59,.05);
-    }
-
-    .admin-session[hidden] {
-      display: none;
-    }
-
-    .admin-session p {
-      margin-bottom: 12px;
-      color: var(--muted);
-      font-size: 11px;
-      overflow-wrap: anywhere;
-    }
-
-    .admin-session-actions {
-      display: flex;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .admin-session-actions a,
-    .admin-session-actions button {
-      flex: 1;
-      min-height: 39px;
-      padding: 9px 12px;
-
-      border: 1px solid var(--border);
-      border-radius: 7px;
-
-      background: var(--panel-2);
-      color: white;
-
-      font-size: 10px;
-      font-weight: 800;
-      text-align: center;
-    }
-
-    /* ========================================
-       ACCOUNT DETAILS MODAL
-    ======================================== */
-
-    .details-modal {
-      z-index: 220;
-    }
-
-    .details-content {
-      width: min(100%, 820px);
-      padding: 0;
-
-      overflow-x: hidden;
-    }
-
-    .details-video-area {
-      position: relative;
-
-      width: 100%;
-      min-height: 240px;
-
-      background: #050605;
-    }
-
-    .details-video-area video {
-      display: block;
-
-      width: 100%;
-      max-height: 440px;
-
-      aspect-ratio: 16 / 9;
-      object-fit: contain;
-
-      background: black;
-    }
-
-    .details-video-placeholder {
-      display: none;
-      align-items: center;
-      justify-content: center;
-
-      min-height: 280px;
-      padding: 25px;
-
-      color: var(--gold);
-      background:
-        radial-gradient(
-          circle,
-          #2c3525,
-          #080b09
-        );
-
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: 30px;
-      font-weight: 900;
-      text-align: center;
-    }
-
-    .details-video-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-
-      padding: 14px 18px;
-
-      border-bottom: 1px solid var(--border);
-
-      background: #111712;
-    }
-
-    .video-action-button {
-      display: inline-flex;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-
-      min-height: 39px;
-      padding: 10px 14px;
-
-      border: 1px solid rgba(242,186,59,.25);
-      border-radius: 7px;
-
-      background: rgba(242,186,59,.06);
-      color: var(--gold);
-
-      font-size: 11px;
-      font-weight: 800;
-    }
-
-    .video-action-button:hover {
-      background: rgba(242,186,59,.13);
-    }
-
-    .video-action-button:disabled {
-      opacity: .4;
-      cursor: not-allowed;
-    }
-
-    .details-body {
-      padding: 27px;
-    }
-
-    .details-body h2 {
-      padding-right: 30px;
-
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: clamp(30px, 5vw, 45px);
-      font-weight: 900;
-      line-height: 1.1;
-      overflow-wrap: anywhere;
-    }
-
-    .details-description {
-      margin-top: 17px;
-
-      color: #c5ccc0;
-      font-size: 13px;
-      line-height: 1.9;
-
-      white-space: pre-wrap;
-      overflow-wrap: anywhere;
-    }
-
-    .details-price {
-      margin-top: 20px;
-
-      color: var(--gold);
-
-      font-family: "Barlow Condensed", sans-serif;
-      font-size: 42px;
-      font-weight: 900;
-    }
-
-    .details-bottom-actions {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 11px;
-
-      margin-top: 20px;
-    }
-
-    .details-bottom-actions .btn {
-      flex: 1;
-      min-width: 150px;
-    }
-
-    /* ========================================
-       REVEAL ANIMATION
-    ======================================== */
-
-    .reveal {
-      opacity: 0;
-      transform: translateY(20px);
-
-      transition:
-        opacity .65s ease,
-        transform .65s ease;
-    }
-
-    .reveal.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-
-    @media (prefers-reduced-motion: reduce) {
-      html {
-        scroll-behavior: auto;
-      }
-
-      .reveal {
-        opacity: 1;
-        transform: none;
-        transition: none;
-      }
-
-      .btn,
-      .account-card,
-      .package-card {
-        transition: none;
-      }
-    }
-
-    /* ========================================
-       TABLET
-    ======================================== */
-
-    @media (max-width: 1000px) {
-      .nav {
-        gap: 17px;
-      }
-
-      .accounts-grid,
-      .packages-grid {
-        grid-template-columns:
-          repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    /* ========================================
-       MOBILE
-    ======================================== */
-
-    @media (max-width: 760px) {
-      .container {
-        width: calc(100% - 26px);
-      }
-
-      .section {
-        padding: 65px 0;
-      }
-
-      .header-inner {
-        min-height: 66px;
-      }
-
-      .brand-mark {
-        width: 39px;
-        height: 39px;
-        font-size: 23px;
-      }
-
-      .brand-name strong {
-        font-size: 22px;
-      }
-
-      .brand-name small {
-        font-size: 7px;
-      }
-
-      .menu-toggle {
-        display: block;
-      }
-
-      .admin-trigger {
-        padding: 9px 11px;
-        font-size: 9px;
-      }
-
-      .nav {
-        position: absolute;
-        top: 66px;
-        left: 0;
-        right: 0;
-
-        display: none;
-        flex-direction: column;
-        align-items: stretch;
-        gap: 0;
-
-        padding: 12px 18px 20px;
-
-        background: #101711;
-        border-bottom: 1px solid var(--border);
-
-        box-shadow: 0 18px 35px rgba(0,0,0,.4);
-      }
-
-      .nav.open {
-        display: flex;
-      }
-
-      .nav a {
-        display: block;
-        padding: 15px 10px;
-        border-bottom: 1px solid rgba(255,255,255,.05);
-      }
-
-      .hero {
-        min-height: 580px;
-        padding: 75px 0 95px;
-      }
-
-      .hero h1 {
-        font-size: clamp(72px, 17vw, 115px);
-      }
-
-      .hero-description {
-        font-size: 13px;
-      }
-
-      .hero-stats {
-        gap: 23px;
-      }
-
-      .features {
-        margin-top: -30px;
-      }
-
-      .features-grid {
-        grid-template-columns: 1fr;
-        gap: 12px;
-      }
-
-      .feature {
-        padding: 21px;
-      }
-
-      .accounts-grid,
-      .packages-grid,
-      .steps-grid {
-        grid-template-columns: 1fr;
-        gap: 17px;
-      }
-
-      .account-media {
-        aspect-ratio: 16 / 9;
-      }
-
-      .section-heading h2 {
-        font-size: 45px;
-      }
-
-      .contact-box {
-        padding: 35px 18px;
-      }
-
-      .floating-whatsapp {
-        width: 54px;
-        height: 54px;
-        right: 15px;
-        bottom: 15px;
-      }
-
-      .details-content {
-        max-height: calc(100dvh - 24px);
-      }
-
-      .details-video-area {
-        min-height: 190px;
-      }
-
-      .details-video-area video {
-        max-height: 300px;
-      }
-
-      .details-body {
-        padding: 21px;
-      }
-
-      .details-video-actions {
-        padding: 12px;
-        gap: 7px;
-      }
-
-      .video-action-button {
-        flex: 1;
-        padding: 10px 8px;
-        font-size: 10px;
-      }
-
-      .modal {
-        padding: 12px;
-      }
-
-      .modal-content {
-        max-height: calc(100dvh - 24px);
-      }
-    }
-
-    @media (max-width: 380px) {
-      .hero h1 {
-        font-size: 67px;
-      }
-
-      .hero-actions .btn {
-        width: 100%;
-      }
-
-      .header-actions {
-        gap: 7px;
-      }
-
-      .brand {
-        gap: 7px;
-      }
-
-      .brand-name strong {
-        font-size: 19px;
-      }
-    }
-
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#070e20">
+
+<title>F5 STORE | PUBG Mobile Accounts & UC</title>
+
+<meta name="description" content="Shop PUBG Mobile accounts and UC packages at F5 STORE.">
+
+<meta property="og:title" content="F5 STORE | PUBG Mobile">
+<meta property="og:description" content="PUBG Mobile accounts and UC packages.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://ffive.store/">
+<meta property="og:image" content="https://ffive.store/images/share-cover.jpg">
+
+<link rel="canonical" href="https://ffive.store/">
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@500;600;700;800&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+/* =========================
+   GLOBAL
+========================= */
+
+:root {
+  --bg:#070e20;
+  --panel:#101d36;
+  --panel2:#142744;
+  --blue:#168bff;
+  --cyan:#48d5ff;
+  --text:#f4f8ff;
+  --muted:#91a6c6;
+  --border:rgba(74,154,255,.22);
+  --green:#22c778;
+}
+
+* {
+  box-sizing:border-box;
+}
+
+html {
+  scroll-behavior:smooth;
+  scroll-padding-top:75px;
+}
+
+body {
+  margin:0;
+  color:var(--text);
+  background:
+    radial-gradient(circle at 10% 5%,#10315c55,transparent 28%),
+    var(--bg);
+  font-family:Inter,Arial,sans-serif;
+  font-size:13px;
+}
+
+body.modal-open {
+  overflow:hidden;
+}
+
+a {
+  color:inherit;
+  text-decoration:none;
+}
+
+button,
+input {
+  font:inherit;
+}
+
+button {
+  cursor:pointer;
+}
+
+img,
+video {
+  display:block;
+  max-width:100%;
+}
+
+[hidden] {
+  display:none!important;
+}
+
+.container {
+  width:min(1100px,calc(100% - 24px));
+  margin:auto;
+}
+
+h1,
+h2,
+h3,
+.logo,
+.price {
+  font-family:Rajdhani,Arial,sans-serif;
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible {
+  outline:2px solid var(--cyan);
+  outline-offset:3px;
+}
+
+/* =========================
+   HEADER
+========================= */
+
+header {
+  position:sticky;
+  top:0;
+  z-index:100;
+  background:#071022f2;
+  backdrop-filter:blur(14px);
+  border-bottom:1px solid var(--border);
+}
+
+.navbar {
+  min-height:62px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+}
+
+.logo {
+  font-size:26px;
+  font-weight:800;
+  letter-spacing:1px;
+  white-space:nowrap;
+}
+
+.logo span {
+  color:var(--cyan);
+}
+
+.nav {
+  display:flex;
+  align-items:center;
+  gap:23px;
+}
+
+.nav a {
+  font-family:Rajdhani,sans-serif;
+  font-size:15px;
+  font-weight:800;
+  color:#c1d4ef;
+  transition:color .2s;
+}
+
+.nav a:hover {
+  color:var(--cyan);
+}
+
+.header-actions {
+  display:flex;
+  gap:7px;
+}
+
+.admin-open,
+.menu-toggle {
+  padding:9px 12px;
+  border:1px solid var(--border);
+  border-radius:7px;
+  background:#102443;
+  color:#b6e7ff;
+  font-weight:800;
+  font-size:11px;
+}
+
+.menu-toggle {
+  display:none;
+}
+
+/* =========================
+   HERO - FIXED
+========================= */
+
+.hero {
+  min-height:325px;
+  display:flex;
+  align-items:center;
+  position:relative;
+  overflow:hidden;
+  border-bottom:1px solid var(--border);
+
+  background:
+    linear-gradient(
+      90deg,
+      #071023f5 0%,
+      #071023db 48%,
+      #07102366 100%
+    ),
+    url("images/pubg-hero.jpg") center right/cover no-repeat,
+    #10294c;
+}
+
+.hero-inner {
+  position:relative;
+  z-index:1;
+  padding:43px 0 51px;
+}
+
+.hero-tag {
+  display:inline-block;
+  padding:7px 11px;
+  border:1px solid #329fff66;
+  border-radius:5px;
+  background:#1474cf1c;
+  color:var(--cyan);
+  font-family:Rajdhani,sans-serif;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:1.6px;
+}
+
+.hero h1 {
+  margin:13px 0 8px;
+  font-size:clamp(46px,8vw,76px);
+  line-height:.9;
+  font-weight:800;
+}
+
+.hero h1 span {
+  color:var(--cyan);
+}
+
+.hero p {
+  max-width:475px;
+  color:#b5c8e4;
+  font-size:12px;
+  line-height:1.85;
+}
+
+/* ONLY TWO EQUAL BUTTONS */
+
+.hero-actions {
+  display:grid;
+  grid-template-columns:repeat(2,minmax(0,1fr));
+  gap:10px;
+  width:min(100%,390px);
+  margin-top:19px;
+}
+
+.btn-primary,
+.btn-secondary {
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  min-width:0;
+  min-height:43px;
+  padding:9px 10px;
+  border-radius:7px;
+  font-family:Rajdhani,sans-serif;
+  font-size:14px;
+  font-weight:800;
+  letter-spacing:.4px;
+  text-align:center;
+  transition:transform .2s,filter .2s;
+}
+
+.btn-primary {
+  background:linear-gradient(110deg,#0874e9,#24a4ff);
+  color:white;
+  border:0;
+}
+
+.btn-secondary {
+  background:#112646bd;
+  color:white;
+  border:1px solid #4caaff66;
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+  transform:translateY(-2px);
+  filter:brightness(1.12);
+}
+
+/* =========================
+   FEATURES - EQUAL CARDS
+========================= */
+
+.features {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:10px;
+  margin-top:-18px;
+  position:relative;
+  z-index:2;
+  align-items:stretch;
+}
+
+.feature {
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+  min-width:0;
+  min-height:86px;
+  height:100%;
+  padding:13px 12px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:linear-gradient(145deg,#142b4a,#0c1931);
+  box-shadow:0 9px 25px #0003;
+  transition:transform .2s,border-color .2s;
+}
+
+.feature:hover {
+  transform:translateY(-3px);
+  border-color:#40b7ff88;
+}
+
+.feature strong {
+  display:block;
+  margin-bottom:5px;
+  color:var(--cyan);
+  font-family:Rajdhani,sans-serif;
+  font-size:15px;
+  font-weight:800;
+  line-height:1.15;
+}
+
+.feature small {
+  display:block;
+  color:var(--muted);
+  font-size:10px;
+  line-height:1.45;
+}
+
+/* =========================
+   SECTIONS
+========================= */
+
+.section {
+  padding:50px 0 15px;
+}
+
+.section-heading {
+  text-align:center;
+  margin-bottom:22px;
+}
+
+.eyebrow {
+  color:var(--cyan);
+  font-family:Rajdhani,sans-serif;
+  font-size:12px;
+  font-weight:800;
+  letter-spacing:2px;
+}
+
+.section-heading h2 {
+  font-size:clamp(27px,4vw,40px);
+  margin:3px 0 5px;
+  font-weight:800;
+}
+
+.section-heading h2 span {
+  color:var(--cyan);
+}
+
+.section-heading p {
+  margin:0;
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.7;
+}
+
+/* =========================
+   COMPACT PRICE FILTER
+========================= */
+
+.filter-panel {
+  width:min(100%,720px);
+  margin:0 auto 17px;
+  padding:11px 12px;
+  border:1px solid var(--border);
+  border-radius:9px;
+  background:linear-gradient(135deg,#122644,#0c1930);
+}
+
+.filter-title {
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:8px;
+  margin-bottom:8px;
+}
+
+.filter-title strong {
+  font-family:Rajdhani,sans-serif;
+  font-size:15px;
+  font-weight:800;
+}
+
+.filter-title span {
+  color:var(--muted);
+  font-size:10px;
+}
+
+.filter-fields {
+  display:grid;
+  grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto auto;
+  align-items:end;
+  gap:7px;
+}
+
+.filter-field label {
+  display:block;
+  margin-bottom:4px;
+  color:#bdd4f0;
+  font-size:9px;
+  font-weight:700;
+}
+
+.filter-field input {
+  width:100%;
+  min-width:0;
+  height:33px;
+  padding:6px 9px;
+  border:1px solid #4d8bd055;
+  border-radius:6px;
+  background:#08162c;
+  color:white;
+  font-size:12px;
+  outline:none;
+}
+
+.filter-field input:focus {
+  border-color:var(--cyan);
+}
+
+.filter-button {
+  min-height:33px;
+  padding:7px 12px;
+  border:0;
+  border-radius:6px;
+  background:var(--blue);
+  color:white;
+  font-family:Rajdhani,sans-serif;
+  font-size:12px;
+  font-weight:800;
+}
+
+.filter-reset {
+  background:#1c3452;
+  border:1px solid var(--border);
+}
+
+.filter-result {
+  margin-top:7px;
+  color:#a9c9e8;
+  font-size:10px;
+  line-height:1.4;
+}
+
+/* =========================
+   ACCOUNTS
+========================= */
+
+.account-grid,
+.accounts-grid {
+  display:grid;
+  grid-template-columns:repeat(4,minmax(0,1fr));
+  gap:13px;
+}
+
+.account-card {
+  min-width:0;
+  overflow:hidden;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:linear-gradient(145deg,#132744,#0c1930);
+  cursor:pointer;
+  transition:transform .25s,border-color .25s,box-shadow .25s;
+}
+
+.account-card:hover {
+  transform:translateY(-4px);
+  border-color:#46baff99;
+  box-shadow:0 12px 26px #0005;
+}
+
+.account-media {
+  position:relative;
+  width:100%;
+  aspect-ratio:16/10;
+  overflow:hidden;
+  background:#142b4b;
+}
+
+.account-media img,
+.account-poster,
+.account-video-preview {
+  width:100%;
+  height:100%;
+  object-fit:cover;
+}
+
+.media-badge {
+  position:absolute;
+  bottom:7px;
+  left:7px;
+  padding:5px 7px;
+  border:1px solid #56bfff66;
+  border-radius:4px;
+  background:#071429dd;
+  color:#bdeaff;
+  font-family:Rajdhani,sans-serif;
+  font-size:10px;
+  font-weight:800;
+}
+
+.account-video-placeholder {
+  display:grid;
+  place-items:center;
+  width:100%;
+  height:100%;
+  padding:10px;
+  background:
+    linear-gradient(#0b1d39aa,#0b1d39bb),
+    url("images/account-placeholder.jpg") center/cover no-repeat;
+  color:#bdeaff;
+  text-align:center;
+  font-size:12px;
+}
+
+.account-info {
+  display:flex;
+  flex-direction:column;
+  padding:11px;
+  min-height:150px;
+}
+
+.account-info h3 {
+  margin:0 0 5px;
+  font-family:Rajdhani,sans-serif;
+  font-size:18px;
+  font-weight:800;
+  line-height:1.1;
+  overflow-wrap:anywhere;
+}
+
+.account-description-preview {
+  display:-webkit-box;
+  -webkit-box-orient:vertical;
+  -webkit-line-clamp:2;
+  overflow:hidden;
+  margin:0 0 8px;
+  color:var(--muted);
+  font-size:10px;
+  line-height:1.5;
+  white-space:pre-line;
+}
+
+.account-price {
+  display:block;
+  margin:auto 0 9px;
+  color:var(--cyan);
+  font-family:Rajdhani,sans-serif;
+  font-size:22px;
+  font-weight:800;
+}
+
+.account-buy {
+  width:100%;
+  min-height:32px;
+  padding:7px 5px;
+  border:0;
+  border-radius:6px;
+  background:linear-gradient(110deg,#086fe1,#189aff);
+  color:white;
+  font-family:Rajdhani,sans-serif;
+  font-size:12px;
+  font-weight:800;
+}
+
+.account-buy:hover {
+  filter:brightness(1.12);
+}
+
+.empty-note,
+.accounts-message {
+  margin-top:13px;
+  padding:20px;
+  border:1px dashed var(--border);
+  border-radius:9px;
+  color:var(--muted);
+  text-align:center;
+  font-size:12px;
+}
+
+/* =========================
+   UC PACKAGES
+========================= */
+
+.uc-banner {
+  min-height:115px;
+  display:flex;
+  align-items:center;
+  margin-bottom:15px;
+  padding:17px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:
+    linear-gradient(90deg,#09182de8,#09182d8a),
+    url("images/uc-banner.jpg") center/cover no-repeat,
+    #142d50;
+}
+
+.uc-banner h3 {
+  margin:0;
+  font-size:23px;
+  line-height:1.1;
+}
+
+.uc-banner h3 span {
+  color:var(--cyan);
+}
+
+.uc-banner p {
+  max-width:420px;
+  margin:6px 0 0;
+  color:#b7cce7;
+  font-size:10px;
+  line-height:1.6;
+}
+
+.packages,
+.packages-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+}
+
+.package-card {
+  position:relative;
+  min-width:0;
+  padding:16px 10px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:linear-gradient(145deg,#152d4d,#0d1b33);
+  text-align:center;
+  cursor:pointer;
+  transition:transform .22s,border-color .22s;
+}
+
+.package-card:hover {
+  transform:translateY(-3px);
+  border-color:#4cbaffaa;
+}
+
+.package-card.featured {
+  border-color:#48baff88;
+}
+
+.uc-image {
+  width:51px;
+  height:51px;
+  margin:5px auto 9px;
+  object-fit:contain;
+}
+
+.package-card .amount,
+.uc-amount {
+  font-family:Rajdhani,sans-serif;
+  font-size:30px;
+  font-weight:800;
+  line-height:1;
+}
+
+.unit,
+.uc-amount span {
+  color:var(--cyan);
+  font-size:14px;
+}
+
+.package-card .price,
+.uc-price {
+  margin:11px 0;
+  color:var(--cyan);
+  font-family:Rajdhani,sans-serif;
+  font-size:25px;
+  font-weight:800;
+}
+
+.buy-label,
+.package-order {
+  display:block;
+  width:100%;
+  padding:9px 4px;
+  border:1px solid #398ee477;
+  border-radius:6px;
+  background:#1477e522;
+  color:#bfeaff;
+  text-align:center;
+  font-family:Rajdhani,sans-serif;
+  font-size:12px;
+  font-weight:800;
+}
+
+/* =========================
+   HOW TO BUY / GUARANTEES
+========================= */
+
+.steps,
+.steps-grid,
+.guarantees-grid {
+  display:grid;
+  grid-template-columns:repeat(3,minmax(0,1fr));
+  gap:12px;
+}
+
+.step,
+.step-card,
+.guarantee-card {
+  min-width:0;
+  padding:16px;
+  border:1px solid var(--border);
+  border-radius:10px;
+  background:linear-gradient(145deg,#122541,#0c192f);
+  transition:transform .2s,border-color .2s;
+}
+
+.step:hover,
+.step-card:hover,
+.guarantee-card:hover {
+  transform:translateY(-3px);
+  border-color:#3eabff88;
+}
+
+.step-number {
+  color:var(--cyan);
+  font-family:Rajdhani,sans-serif;
+  font-size:26px;
+  font-weight:800;
+}
+
+.step h3,
+.step-card h3,
+.guarantee-card h3 {
+  margin:5px 0;
+  font-family:Rajdhani,sans-serif;
+  font-size:18px;
+  font-weight:800;
+}
+
+.step p,
+.step-card p,
+.guarantee-card p {
+  margin:0;
+  color:var(--muted);
+  font-size:10px;
+  line-height:1.65;
+}
+
+.guarantee-icon {
+  display:grid;
+  place-items:center;
+  width:31px;
+  height:31px;
+  margin-bottom:7px;
+  border:1px solid #48baff66;
+  border-radius:7px;
+  color:var(--cyan);
+  font-family:Rajdhani,sans-serif;
+  font-size:15px;
+  font-weight:800;
+}
+
+/* =========================
+   CONTACT
+========================= */
+
+.contact-box {
+  padding:25px 15px;
+  border:1px solid #3e9df466;
+  border-radius:12px;
+  background:
+    linear-gradient(#0c1d37dc,#0c1d37ec),
+    url("images/contact-bg.jpg") center/cover no-repeat;
+  text-align:center;
+}
+
+.contact-box h2 {
+  margin:0;
+  font-size:29px;
+}
+
+.contact-box h2 span {
+  color:var(--cyan);
+}
+
+.contact-box p {
+  max-width:480px;
+  margin:7px auto 15px;
+  color:var(--muted);
+  font-size:11px;
+  line-height:1.7;
+}
+
+.contact-button {
+  display:inline-block;
+  padding:11px 20px;
+  border-radius:7px;
+  background:var(--green);
+  color:white;
+  font-family:Rajdhani,sans-serif;
+  font-size:14px;
+  font-weight:800;
+}
+
+/* =========================
+   FOOTER
+========================= */
+
+footer {
+  margin-top:40px;
+  padding:24px 0;
+  border-top:1px solid var(--border);
+  color:var(--muted);
+  text-align:center;
+  font-size:11px;
+}
+
+footer .logo {
+  margin-bottom:5px;
+}
+
+footer p {
+  margin:5px 0;
+}
+
+/* =========================
+   WHATSAPP FLOAT
+========================= */
+
+.floating-whatsapp {
+  position:fixed;
+  right:14px;
+  bottom:14px;
+  z-index:200;
+  display:grid;
+  place-items:center;
+  width:49px;
+  height:49px;
+  border:1px solid #ffffff33;
+  border-radius:50%;
+  background:#18b86b;
+  color:white;
+  box-shadow:0 8px 24px #0008;
+}
+
+.floating-whatsapp svg {
+  width:25px;
+  height:25px;
+  fill:none;
+  stroke:currentColor;
+  stroke-width:1.8;
+}
+
+/* =========================
+   MODALS
+========================= */
+
+.account-details-modal,
+.admin-modal,
+.modal {
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:600;
+  align-items:center;
+  justify-content:center;
+  padding:12px;
+  overflow-y:auto;
+  background:#020714e8;
+  backdrop-filter:blur(9px);
+}
+
+.account-details-modal.open,
+.admin-modal.open,
+.modal.open {
+  display:flex;
+}
+
+.account-details-box,
+.admin-box,
+.modal-content {
+  position:relative;
+  width:min(780px,100%);
+  max-height:calc(100dvh - 24px);
+  overflow-y:auto;
+  border:1px solid #429bf077;
+  border-radius:12px;
+  background:#10203a;
+  box-shadow:0 20px 60px #0009;
+}
+
+.details-close,
+.modal-close {
+  position:absolute;
+  top:10px;
+  right:10px;
+  z-index:5;
+  width:35px;
+  height:35px;
+  border:1px solid #ffffff55;
+  border-radius:50%;
+  background:#061225e8;
+  color:white;
+  font-size:22px;
+}
+
+.details-video,
+.details-video-placeholder {
+  width:100%;
+  max-height:410px;
+  aspect-ratio:16/9;
+  background:black;
+  object-fit:contain;
+}
+
+.details-video-placeholder {
+  display:grid;
+  place-items:center;
+  color:var(--muted);
+  text-align:center;
+}
+
+.video-tools,
+.details-video-actions {
+  display:flex;
+  justify-content:center;
+  gap:9px;
+  padding:11px;
+  background:#09172d;
+}
+
+.video-icon-button,
+.video-action-button {
+  min-height:35px;
+  padding:8px 12px;
+  border:1px solid #439ee577;
+  border-radius:7px;
+  background:#153356;
+  color:#b9e8ff;
+  font-family:Rajdhani,sans-serif;
+  font-size:13px;
+  font-weight:800;
+}
+
+.video-help {
+  padding:0 10px 10px;
+  background:#09172d;
+  color:var(--muted);
+  text-align:center;
+  font-size:10px;
+}
+
+.details-content,
+.details-body {
+  padding:19px;
+}
+
+.details-content h2,
+.details-body h2 {
+  margin:0 0 10px;
+  font-size:28px;
+  line-height:1.2;
+  overflow-wrap:anywhere;
+}
+
+.details-description-title {
+  color:var(--cyan);
+  font-size:10px;
+  font-weight:800;
+  letter-spacing:1.4px;
+}
+
+.details-description {
+  margin:9px 0;
+  color:#c5d5ea;
+  font-size:12px;
+  line-height:1.8;
+  white-space:pre-wrap;
+  overflow-wrap:anywhere;
+}
+
+.details-price {
+  margin:12px 0;
+  color:var(--cyan);
+  font-family:Rajdhani,sans-serif;
+  font-size:29px;
+  font-weight:800;
+}
+
+.details-actions,
+.details-bottom-actions {
+  display:flex;
+  flex-wrap:wrap;
+  gap:9px;
+  margin-top:10px;
+}
+
+.details-actions button,
+.details-bottom-actions button {
+  flex:1;
+  min-width:120px;
+  padding:11px;
+  border:1px solid #449ef277;
+  border-radius:7px;
+  background:var(--blue);
+  color:white;
+  font-family:Rajdhani,sans-serif;
+  font-size:14px;
+  font-weight:800;
+}
+
+.details-actions .details-share,
+.details-actions .details-close-bottom,
+.details-bottom-actions .btn-outline {
+  background:#183653;
+}
+
+.admin-box {
+  max-width:410px;
+  padding:22px;
+}
+
+.admin-box h2 {
+  margin:0;
+  font-size:27px;
+}
+
+.admin-box p {
+  color:var(--muted);
+  font-size:12px;
+}
+
+.admin-box label {
+  display:block;
+  margin:13px 0 6px;
+  font-weight:700;
+}
+
+.admin-box input {
+  width:100%;
+  padding:11px;
+  border:1px solid var(--border);
+  border-radius:7px;
+  background:#08162a;
+  color:white;
+}
+
+.login-button {
+  width:100%;
+  margin-top:16px;
+  padding:12px;
+  border:0;
+  border-radius:7px;
+  background:var(--blue);
+  color:white;
+  font-weight:800;
+}
+
+.login-status {
+  margin-top:12px;
+  color:#ffaaa1;
+}
+
+.close-admin {
+  position:absolute;
+  top:8px;
+  right:12px;
+  border:0;
+  background:transparent;
+  color:white;
+  font-size:27px;
+}
+
+.admin-session {
+  margin-top:15px;
+  padding:12px;
+  border:1px solid var(--border);
+  border-radius:8px;
+}
+
+.admin-session-actions {
+  display:flex;
+  gap:8px;
+}
+
+.admin-session-actions a,
+.admin-session-actions button {
+  flex:1;
+  padding:10px;
+  border:1px solid var(--border);
+  border-radius:6px;
+  background:#183653;
+  color:white;
+  text-align:center;
+}
+
+/* =========================
+   ANIMATIONS
+========================= */
+
+.reveal {
+  opacity:0;
+  transform:translateY(13px);
+  transition:opacity .5s,transform .5s;
+}
+
+.reveal.visible {
+  opacity:1;
+  transform:none;
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media(max-width:850px) {
+  .account-grid,
+  .accounts-grid {
+    grid-template-columns:repeat(3,minmax(0,1fr));
+  }
+
+  .nav {
+    gap:12px;
+  }
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:650px) {
+
+  .navbar {
+    min-height:59px;
+  }
+
+  .logo {
+    font-size:23px;
+  }
+
+  .menu-toggle {
+    display:block;
+  }
+
+  .nav {
+    display:none;
+    position:absolute;
+    top:59px;
+    left:0;
+    right:0;
+    flex-direction:column;
+    align-items:stretch;
+    gap:0;
+    padding:12px;
+    background:#0d1c35;
+    border-bottom:1px solid var(--border);
+  }
+
+  .nav.open {
+    display:flex;
+  }
+
+  .nav a {
+    padding:11px;
+  }
+
+  /* HERO BUTTONS SAME SIZE */
+
+  .hero {
+    min-height:300px;
+  }
+
+  .hero-inner {
+    padding:40px 0 45px;
+  }
+
+  .hero h1 {
+    font-size:53px;
+  }
+
+  .hero p {
+    font-size:11px;
+    max-width:350px;
+  }
+
+  .hero-actions {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    width:min(100%,360px);
+    gap:8px;
+  }
+
+  .hero-actions a {
+    min-height:40px;
+    font-size:13px;
+    padding:8px 5px;
+  }
+
+  /* ALL THREE CARDS SAME SIZE */
+
+  .features {
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:7px;
+    margin-top:-12px;
+  }
+
+  .feature {
+    min-height:77px;
+    height:100%;
+    padding:10px 8px;
+    border-radius:8px;
+  }
+
+  .feature strong {
+    font-size:12px;
+    line-height:1.2;
+    min-height:29px;
+    display:flex;
+    align-items:center;
+  }
+
+  .feature small {
+    font-size:9px;
+    line-height:1.35;
+  }
+
+  .section {
+    padding:39px 0 8px;
+  }
+
+  .section-heading {
+    margin-bottom:17px;
+  }
+
+  .section-heading h2 {
+    font-size:28px;
+  }
+
+  /* SMALL FILTER - ALL ON ONE ROW */
+
+  .filter-panel {
+    padding:10px;
+    margin-bottom:13px;
+    border-radius:8px;
+  }
+
+  .filter-title {
+    margin-bottom:7px;
+  }
+
+  .filter-title strong {
+    font-size:13px;
+  }
+
+  .filter-title span {
+    font-size:9px;
+  }
+
+  .filter-fields {
+    grid-template-columns:minmax(0,1fr) minmax(0,1fr) auto auto;
+    gap:5px;
+  }
+
+  .filter-field label {
+    font-size:8px;
+    margin-bottom:3px;
+  }
+
+  .filter-field input {
+    height:31px;
+    padding:5px 6px;
+    font-size:11px;
+  }
+
+  .filter-button {
+    min-height:31px;
+    padding:5px 8px;
+    font-size:10px;
+  }
+
+  .filter-result {
+    margin-top:6px;
+    font-size:9px;
+  }
+
+  /* 2 ACCOUNT CARDS */
+
+  .account-grid,
+  .accounts-grid {
+    grid-template-columns:repeat(2,minmax(0,1fr));
+    gap:9px;
+  }
+
+  .account-info {
+    padding:9px;
+    min-height:137px;
+  }
+
+  .account-info h3 {
+    font-size:16px;
+    line-height:1.15;
+  }
+
+  .account-description-preview {
+    font-size:9px;
+    line-height:1.45;
+  }
+
+  .account-price {
+    font-size:19px;
+    margin-bottom:7px;
+  }
+
+  .account-buy {
+    min-height:29px;
+    font-size:11px;
+  }
+
+  /* 3 UC CARDS */
+
+  .packages,
+  .packages-grid {
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:7px;
+  }
+
+  .package-card {
+    padding:12px 5px;
+    border-radius:8px;
+  }
+
+  .uc-image {
+    width:38px;
+    height:38px;
+    margin:3px auto 7px;
+  }
+
+  .package-card .amount,
+  .uc-amount {
+    font-size:23px;
+  }
+
+  .unit,
+  .uc-amount span {
+    font-size:11px;
+  }
+
+  .package-card .price,
+  .uc-price {
+    margin:8px 0;
+    font-size:21px;
+  }
+
+  .buy-label,
+  .package-order {
+    padding:8px 2px;
+    font-size:10px;
+  }
+
+  .uc-banner {
+    min-height:95px;
+    padding:12px;
+  }
+
+  .uc-banner h3 {
+    font-size:19px;
+  }
+
+  /* 3 SMALL STEP CARDS */
+
+  .steps,
+  .steps-grid,
+  .guarantees-grid {
+    grid-template-columns:repeat(3,minmax(0,1fr));
+    gap:7px;
+  }
+
+  .step,
+  .step-card,
+  .guarantee-card {
+    padding:10px 7px;
+    border-radius:8px;
+  }
+
+  .step-number {
+    font-size:21px;
+  }
+
+  .step h3,
+  .step-card h3,
+  .guarantee-card h3 {
+    font-size:14px;
+    line-height:1.15;
+  }
+
+  .step p,
+  .step-card p,
+  .guarantee-card p {
+    font-size:9px;
+    line-height:1.45;
+  }
+
+  .guarantee-icon {
+    width:27px;
+    height:27px;
+    font-size:12px;
+  }
+
+  .details-content,
+  .details-body {
+    padding:14px;
+  }
+
+  .details-actions,
+  .details-bottom-actions {
+    flex-direction:column;
+  }
+
+  .details-actions button,
+  .details-bottom-actions button {
+    width:100%;
+  }
+}
+
+@media(max-width:360px) {
+  .hero h1 {
+    font-size:45px;
+  }
+
+  .feature strong {
+    font-size:11px;
+  }
+
+  .filter-button {
+    padding:5px 6px;
+    font-size:9px;
+  }
+
+  .package-card .amount,
+  .uc-amount {
+    font-size:20px;
+  }
+
+  .package-card .price,
+  .uc-price {
+    font-size:19px;
+  }
+
+  .account-info h3 {
+    font-size:15px;
+  }
+}
+
+@media(prefers-reduced-motion:reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior:auto!important;
+    animation:none!important;
+    transition:none!important;
+  }
+
+  .reveal {
+    opacity:1;
+    transform:none;
+  }
+}
+
+</style>
 </head>
 
 <body>
 
-  <!-- ======================================
-       HEADER
-  ======================================= -->
+<!-- HEADER -->
 
-  <header class="site-header">
+<header>
+  <div class="container navbar">
 
-    <div class="container header-inner">
+    <a class="logo" href="#home">
+      F5 <span>STORE</span>
+    </a>
 
-      <a
-        href="#home"
-        class="brand"
-        aria-label="F5 STORE Home"
+    <nav id="nav" class="nav">
+      <a href="#home">HOME</a>
+      <a href="#accounts">ACCOUNTS</a>
+      <a href="#uc">UC PRICES</a>
+      <a href="#how">HOW TO BUY</a>
+      <a href="#guarantees">GUARANTEES</a>
+    </nav>
+
+    <div class="header-actions">
+
+      <button
+        id="openAdmin"
+        class="admin-open"
+        type="button"
       >
-        <div class="brand-mark">F5</div>
+        ADMIN
+      </button>
 
-        <div class="brand-name">
-          <strong>F5 <span>STORE</span></strong>
-          <small>PUBG MOBILE SHOP</small>
-        </div>
+      <button
+        id="menuToggle"
+        class="menu-toggle"
+        type="button"
+        aria-label="Toggle menu"
+        aria-expanded="false"
+      >
+        MENU
+      </button>
+
+    </div>
+
+  </div>
+</header>
+
+<main>
+
+<!-- HERO -->
+
+<section class="hero" id="home">
+
+  <div class="hero-inner container">
+
+    <span class="hero-tag">
+      F5 STORE / PUBG MOBILE
+    </span>
+
+    <h1>
+      F5 <span>STORE</span>
+    </h1>
+
+    <p>
+      PUBG Mobile accounts and UC packages.
+      Browse available accounts, watch videos
+      and contact us to order.
+    </p>
+
+    <!-- TWO BUTTONS ONLY -->
+
+    <div class="hero-actions">
+
+      <a class="btn-primary" href="#accounts">
+        VIEW ACCOUNTS
       </a>
 
-      <nav
-        class="nav"
-        id="nav"
-        aria-label="Main navigation"
-      >
-        <a href="#home">HOME</a>
-        <a href="#accounts">ACCOUNTS</a>
-        <a href="#uc">BUY UC</a>
-        <a href="#how">HOW IT WORKS</a>
-        <a href="#contact">CONTACT</a>
-      </nav>
+      <a class="btn-secondary" href="#uc">
+        UC PRICES
+      </a>
 
-      <div class="header-actions">
+    </div>
+
+  </div>
+
+</section>
+
+<!-- THREE EQUAL CARDS -->
+
+<div class="container features">
+
+  <div class="feature">
+    <strong>ACCOUNT VIDEOS</strong>
+    <small>Watch before ordering</small>
+  </div>
+
+  <div class="feature">
+    <strong>UC PACKAGES</strong>
+    <small>Choose your amount</small>
+  </div>
+
+  <div class="feature">
+    <strong>DIRECT SUPPORT</strong>
+    <small>Order via WhatsApp</small>
+  </div>
+
+</div>
+
+<!-- ACCOUNTS -->
+
+<section class="section container" id="accounts">
+
+  <div class="section-heading reveal">
+
+    <div class="eyebrow">
+      ACCOUNT MARKETPLACE
+    </div>
+
+    <h2>
+      PUBG <span>ACCOUNTS</span>
+    </h2>
+
+    <p>
+      Find an account that fits your budget.
+    </p>
+
+  </div>
+
+  <!-- COMPACT PRICE FILTER -->
+
+  <div class="filter-panel">
+
+    <div class="filter-title">
+
+      <strong>
+        FILTER BY PRICE
+      </strong>
+
+      <span>
+        Budget in USD
+      </span>
+
+    </div>
+
+    <form id="priceFilterForm" class="filter-fields">
+
+      <div class="filter-field">
+
+        <label for="minPrice">
+          MIN ($)
+        </label>
+
+        <input
+          id="minPrice"
+          type="number"
+          min="0"
+          step="0.01"
+          placeholder="50"
+          inputmode="decimal"
+        >
+
+      </div>
+
+      <div class="filter-field">
+
+        <label for="maxPrice">
+          MAX ($)
+        </label>
+
+        <input
+          id="maxPrice"
+          type="number"
+          min="0"
+          step="0.01"
+          placeholder="100"
+          inputmode="decimal"
+        >
+
+      </div>
+
+      <button
+        class="filter-button"
+        type="submit"
+      >
+        SEARCH
+      </button>
+
+      <button
+        class="filter-button filter-reset"
+        type="button"
+        id="resetPriceFilter"
+      >
+        RESET
+      </button>
+
+    </form>
+
+    <div
+      id="filterResult"
+      class="filter-result"
+      role="status"
+      aria-live="polite"
+    >
+      Showing all available accounts.
+    </div>
+
+  </div>
+
+  <!-- FIREBASE ACCOUNTS -->
+
+  <div
+    class="account-grid accounts-grid"
+    id="accountsGrid"
+  ></div>
+
+  <div
+    class="empty-note"
+    id="accountsLoading"
+  >
+    LOADING ACCOUNTS...
+  </div>
+
+  <div
+    class="empty-note"
+    id="accountsEmpty"
+    hidden
+  >
+    No accounts available right now.
+  </div>
+
+  <div
+    class="empty-note"
+    id="accountsError"
+    hidden
+  >
+    Unable to load accounts.
+    Please refresh.
+  </div>
+
+  <div
+    class="empty-note"
+    id="filterEmpty"
+    hidden
+  >
+    No accounts found in this price range.
+  </div>
+
+</section>
+
+<!-- UC PACKAGES -->
+
+<section class="section container" id="uc">
+
+  <div class="section-heading reveal">
+
+    <div class="eyebrow">
+      PUBG MOBILE TOP-UP
+    </div>
+
+    <h2>
+      UC <span>PRICES</span>
+    </h2>
+
+    <p>
+      Select a package to order on WhatsApp.
+    </p>
+
+  </div>
+
+  <div class="uc-banner reveal">
+
+    <div>
+
+      <h3>
+        POWER UP WITH <span>UC</span>
+      </h3>
+
+      <p>
+        Choose your preferred PUBG Mobile UC package.
+      </p>
+
+    </div>
+
+  </div>
+
+  <div class="packages">
+
+    <div
+      class="package-card reveal"
+      tabindex="0"
+      role="button"
+      data-uc="60 UC"
+      data-price="0.99"
+    >
+      <img
+        class="uc-image"
+        src="images/uc-icon.png"
+        alt="UC"
+        loading="lazy"
+      >
+
+      <div class="amount">
+        60 <span class="unit">UC</span>
+      </div>
+
+      <div class="price">$0.99</div>
+      <div class="buy-label">ORDER</div>
+    </div>
+
+    <div
+      class="package-card reveal"
+      tabindex="0"
+      role="button"
+      data-uc="325 UC"
+      data-price="4.99"
+    >
+      <img
+        class="uc-image"
+        src="images/uc-icon.png"
+        alt="UC"
+        loading="lazy"
+      >
+
+      <div class="amount">
+        325 <span class="unit">UC</span>
+      </div>
+
+      <div class="price">$4.99</div>
+      <div class="buy-label">ORDER</div>
+    </div>
+
+    <div
+      class="package-card featured reveal"
+      tabindex="0"
+      role="button"
+      data-uc="660 UC"
+      data-price="9.49"
+    >
+      <img
+        class="uc-image"
+        src="images/uc-icon.png"
+        alt="UC"
+        loading="lazy"
+      >
+
+      <div class="amount">
+        660 <span class="unit">UC</span>
+      </div>
+
+      <div class="price">$9.49</div>
+      <div class="buy-label">ORDER</div>
+    </div>
+
+    <div
+      class="package-card reveal"
+      tabindex="0"
+      role="button"
+      data-uc="1800 UC"
+      data-price="23.99"
+    >
+      <img
+        class="uc-image"
+        src="images/uc-icon.png"
+        alt="UC"
+        loading="lazy"
+      >
+
+      <div class="amount">
+        1800 <span class="unit">UC</span>
+      </div>
+
+      <div class="price">$23.99</div>
+      <div class="buy-label">ORDER</div>
+    </div>
+
+    <div
+      class="package-card reveal"
+      tabindex="0"
+      role="button"
+      data-uc="3500 UC"
+      data-price="47.50"
+    >
+      <img
+        class="uc-image"
+        src="images/uc-icon.png"
+        alt="UC"
+        loading="lazy"
+      >
+
+      <div class="amount">
+        3500 <span class="unit">UC</span>
+      </div>
+
+      <div class="price">$47.50</div>
+      <div class="buy-label">ORDER</div>
+    </div>
+
+    <div
+      class="package-card reveal"
+      tabindex="0"
+      role="button"
+      data-uc="8100 UC"
+      data-price="95.00"
+    >
+      <img
+        class="uc-image"
+        src="images/uc-icon.png"
+        alt="UC"
+        loading="lazy"
+      >
+
+      <div class="amount">
+        8100 <span class="unit">UC</span>
+      </div>
+
+      <div class="price">$95.00</div>
+      <div class="buy-label">ORDER</div>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- HOW TO BUY -->
+
+<section class="section container" id="how">
+
+  <div class="section-heading reveal">
+
+    <div class="eyebrow">
+      SIMPLE PROCESS
+    </div>
+
+    <h2>
+      HOW TO <span>BUY</span>
+    </h2>
+
+  </div>
+
+  <div class="steps">
+
+    <div class="step reveal">
+      <div class="step-number">01</div>
+      <h3>CHOOSE</h3>
+      <p>Select an account or UC package.</p>
+    </div>
+
+    <div class="step reveal">
+      <div class="step-number">02</div>
+      <h3>CONTACT</h3>
+      <p>Message F5 STORE on WhatsApp.</p>
+    </div>
+
+    <div class="step reveal">
+      <div class="step-number">03</div>
+      <h3>CONFIRM</h3>
+      <p>Agree on payment and delivery details.</p>
+    </div>
+
+  </div>
+
+</section>
+
+<!-- GUARANTEES -->
+
+<section class="section container" id="guarantees">
+
+  <div class="section-heading reveal">
+
+    <div class="eyebrow">
+      SHOP INFORMATION
+    </div>
+
+    <h2>
+      OUR <span>GUARANTEES</span>
+    </h2>
+
+    <p>
+      Clear information before you place an order.
+    </p>
+
+  </div>
+
+  <div class="guarantees-grid">
+
+    <div class="guarantee-card reveal">
+
+      <div class="guarantee-icon">01</div>
+
+      <h3>VIDEO PREVIEW</h3>
+
+      <p>
+        Review account videos and descriptions.
+      </p>
+
+    </div>
+
+    <div class="guarantee-card reveal">
+
+      <div class="guarantee-icon">02</div>
+
+      <h3>PRICE CONFIRMATION</h3>
+
+      <p>
+        Confirm the final price before payment.
+      </p>
+
+    </div>
+
+    <div class="guarantee-card reveal">
+
+      <div class="guarantee-icon">03</div>
+
+      <h3>DIRECT CONTACT</h3>
+
+      <p>
+        Discuss delivery details on WhatsApp.
+      </p>
+
+    </div>
+
+  </div>
+
+</section>
+
+<!-- CONTACT -->
+
+<section class="section container" id="contact">
+
+  <div class="contact-box reveal">
+
+    <h2>
+      CONTACT <span>F5 STORE</span>
+    </h2>
+
+    <p>
+      Need help choosing an account or UC package?
+      Message us directly.
+    </p>
+
+    <a
+      class="contact-button"
+      href="https://wa.me/96181607574"
+      target="_blank"
+      rel="noopener noreferrer"
+    >
+      CONTACT ON WHATSAPP
+    </a>
+
+  </div>
+
+</section>
+
+</main>
+
+<!-- FOOTER -->
+
+<footer>
+
+  <div class="container">
+
+    <div class="logo">
+      F5 <span>STORE</span>
+    </div>
+
+    <p>
+      PUBG MOBILE ACCOUNTS & UC
+    </p>
+
+    <p>
+      © <span id="year">2026</span> F5 STORE.
+      All rights reserved.
+    </p>
+
+  </div>
+
+</footer>
+
+<!-- FLOATING WHATSAPP CONTACT -->
+
+<a
+  class="floating-whatsapp"
+  href="https://wa.me/96181607574"
+  target="_blank"
+  rel="noopener noreferrer"
+  aria-label="Contact F5 STORE on WhatsApp"
+>
+  <svg viewBox="0 0 24 24" aria-hidden="true">
+    <path d="M20 11.5a8.5 8.5 0 0 1-12.5 7.5L3 20l1-4.5A8.5 8.5 0 1 1 20 11.5z"/>
+    <path d="M8 11h8M8 14h5"/>
+  </svg>
+</a>
+
+<!-- ACCOUNT DETAILS MODAL -->
+
+<div
+  class="account-details-modal modal"
+  id="accountDetailsModal"
+  aria-hidden="true"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="accountDetailsTitle"
+>
+
+  <div class="account-details-box">
+
+    <button
+      id="closeAccountDetails"
+      class="details-close"
+      type="button"
+      aria-label="Close account details"
+    >
+      ×
+    </button>
+
+    <video
+      id="accountDetailsVideo"
+      class="details-video"
+      controls
+      playsinline
+      preload="none"
+      hidden
+    ></video>
+
+    <div
+      id="accountDetailsVideoPlaceholder"
+      class="details-video-placeholder"
+    >
+      VIDEO NOT AVAILABLE
+    </div>
+
+    <div class="video-tools">
+
+      <button
+        id="downloadAccountVideo"
+        class="video-icon-button"
+        type="button"
+      >
+        DOWNLOAD VIDEO
+      </button>
+
+      <button
+        id="shareAccountVideo"
+        class="video-icon-button"
+        type="button"
+      >
+        SHARE VIDEO
+      </button>
+
+    </div>
+
+    <div class="video-help">
+      If playback is slow, try downloading the video.
+    </div>
+
+    <div class="details-content">
+
+      <h2 id="accountDetailsTitle">
+        ACCOUNT DETAILS
+      </h2>
+
+      <div class="details-description-title">
+        DESCRIPTION
+      </div>
+
+      <div
+        id="accountDetailsDescription"
+        class="details-description"
+      ></div>
+
+      <div
+        id="accountDetailsPrice"
+        class="details-price"
+      ></div>
+
+      <div class="details-actions">
 
         <button
+          id="accountDetailsWhatsApp"
           type="button"
-          class="admin-trigger"
-          id="openAdmin"
         >
-          ADMIN
+          CONTACT VIA WHATSAPP
         </button>
 
         <button
+          id="accountDetailsShare"
+          class="details-share"
           type="button"
-          class="menu-toggle"
-          id="menuToggle"
-          aria-label="Toggle navigation"
-          aria-expanded="false"
-          aria-controls="nav"
         >
-          ☰
+          SHARE ACCOUNT
+        </button>
+
+      </div>
+
+      <div class="details-actions">
+
+        <button
+          id="closeAccountDetailsBottom"
+          class="details-close-bottom"
+          type="button"
+        >
+          CLOSE
         </button>
 
       </div>
 
     </div>
 
-  </header>
+  </div>
 
-  <!-- ======================================
-       HERO
-  ======================================= -->
+</div>
 
-  <main>
+<!-- ADMIN MODAL -->
 
-    <section class="hero" id="home">
+<div
+  class="admin-modal modal"
+  id="adminModal"
+  aria-hidden="true"
+  role="dialog"
+  aria-modal="true"
+  aria-labelledby="adminModalTitle"
+>
 
-      <div class="container">
+  <div class="admin-box">
 
-        <div class="hero-content">
+    <button
+      id="closeAdmin"
+      class="close-admin"
+      type="button"
+      aria-label="Close admin login"
+    >
+      ×
+    </button>
 
-          <div class="hero-badge">
-            PREMIUM PUBG MOBILE STORE
-          </div>
+    <h2 id="adminModalTitle">
+      ADMIN LOGIN
+    </h2>
 
-          <h1>
-            F5<br>
-            <span>STORE</span>
-          </h1>
+    <p>
+      Sign in to manage your store.
+    </p>
 
-          <div class="hero-subtitle">
-            YOUR NEXT CHICKEN DINNER STARTS HERE
-          </div>
+    <form id="loginForm">
 
-          <p class="hero-description">
-            Explore PUBG Mobile accounts,
-            watch real account videos and
-            discover UC packages. Contact
-            F5 STORE directly on WhatsApp
-            to place your order.
-          </p>
+      <label for="adminEmail">
+        EMAIL
+      </label>
 
-          <div class="hero-actions">
+      <input
+        id="adminEmail"
+        type="email"
+        required
+        autocomplete="username"
+      >
 
-            <a
-              href="#accounts"
-              class="btn btn-gold"
-            >
-              🎮 EXPLORE ACCOUNTS
-            </a>
+      <label for="adminPassword">
+        PASSWORD
+      </label>
 
-            <a
-              href="#uc"
-              class="btn btn-outline"
-            >
-              💎 BUY PUBG UC
-            </a>
+      <input
+        id="adminPassword"
+        type="password"
+        required
+        autocomplete="current-password"
+      >
 
-          </div>
+      <button
+        class="login-button"
+        id="loginButton"
+        type="submit"
+      >
+        SIGN IN
+      </button>
 
-          <div class="hero-stats">
+    </form>
 
-            <div class="hero-stat">
-              <strong>PUBG</strong>
-              <span>MOBILE ACCOUNTS</span>
-            </div>
+    <p
+      id="loginStatus"
+      class="login-status"
+      role="status"
+    ></p>
 
-            <div class="hero-stat">
-              <strong>UC</strong>
-              <span>TOP-UP PACKAGES</span>
-            </div>
-
-            <div class="hero-stat">
-              <strong>24/7</strong>
-              <span>ONLINE CATALOG</span>
-            </div>
-
-          </div>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- ====================================
-         FEATURES
-    ===================================== -->
-
-    <section class="features">
-
-      <div class="container">
-
-        <div class="features-grid">
-
-          <article class="feature reveal">
-
-            <div class="feature-icon">🎬</div>
-
-            <h3>ACCOUNT VIDEOS</h3>
-
-            <p>
-              Watch account videos and
-              review the details before
-              contacting us.
-            </p>
-
-          </article>
-
-          <article class="feature reveal">
-
-            <div class="feature-icon">⚡</div>
-
-            <h3>DIRECT CONTACT</h3>
-
-            <p>
-              Send your order directly
-              to F5 STORE through
-              WhatsApp.
-            </p>
-
-          </article>
-
-          <article class="feature reveal">
-
-            <div class="feature-icon">🎮</div>
-
-            <h3>PUBG MOBILE</h3>
-
-            <p>
-              Browse available accounts
-              and UC top-up packages
-              in one place.
-            </p>
-
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- ====================================
-         PUBG ACCOUNTS
-    ===================================== -->
-
-    <section
-      class="section accounts-section"
-      id="accounts"
+    <div
+      class="admin-session"
+      id="adminSession"
+      hidden
     >
 
-      <div class="container">
+      <p id="sessionText">
+        Administrator session active.
+      </p>
 
-        <div class="section-heading reveal">
+      <div class="admin-session-actions">
 
-          <div class="section-tag">
-            🎯 ACCOUNT MARKETPLACE
-          </div>
+        <a href="admin.html">
+          DASHBOARD
+        </a>
 
-          <h2>
-            PUBG <span>ACCOUNTS</span>
-          </h2>
-
-          <p>
-            Explore available accounts.
-            Tap any account to view its
-            details, video and price.
-          </p>
-
-        </div>
-
-        <div
-          id="accountsGrid"
-          class="accounts-grid"
-          aria-live="polite"
-        ></div>
-
-        <div
-          class="accounts-message"
-          id="accountsLoading"
-          role="status"
+        <button
+          id="logoutButton"
+          type="button"
         >
-          Loading available PUBG accounts...
-        </div>
-
-        <div
-          class="accounts-message"
-          id="accountsEmpty"
-          hidden
-        >
-          No accounts are available
-          right now. Check back soon!
-        </div>
-
-        <div
-          class="accounts-message"
-          id="accountsError"
-          hidden
-          role="alert"
-        >
-          Unable to load accounts.
-          Please refresh the page.
-        </div>
+          SIGN OUT
+        </button>
 
       </div>
 
-    </section>
+    </div>
 
-    <!-- ====================================
-         UC PACKAGES
-    ===================================== -->
+  </div>
 
-    <section
-      class="section uc-section"
-      id="uc"
-    >
+</div>
 
-      <div class="container">
+<!-- PRICE FILTER -->
 
-        <div class="section-heading reveal">
+<script>
+(function () {
+  "use strict";
 
-          <div class="section-tag">
-            💎 PUBG MOBILE TOP-UP
-          </div>
+  const grid = document.getElementById("accountsGrid");
+  const form = document.getElementById("priceFilterForm");
 
-          <h2>
-            BUY <span>UC</span>
-          </h2>
+  const minInput = document.getElementById("minPrice");
+  const maxInput = document.getElementById("maxPrice");
 
-          <p>
-            Choose your PUBG Mobile
-            UC package and contact
-            F5 STORE to order.
-          </p>
+  const resetButton = document.getElementById("resetPriceFilter");
 
-        </div>
+  const result = document.getElementById("filterResult");
+  const empty = document.getElementById("filterEmpty");
 
-        <div class="packages-grid">
+  let minPrice = null;
+  let maxPrice = null;
+  let active = false;
 
-          <!-- 60 UC -->
+  function getCards() {
+    return Array.from(
+      grid.querySelectorAll(".account-card")
+    );
+  }
 
-          <article
-            class="package-card reveal"
-            data-uc="60 UC"
-            data-price="0.99"
-            aria-label="Order 60 UC for 0.99 dollars"
-          >
+  function getCardPrice(card) {
+    const priceElement = card.querySelector(".account-price");
 
-            <div class="uc-icon">UC</div>
+    if (!priceElement) {
+      return null;
+    }
 
-            <div class="uc-amount">
-              60 <span>UC</span>
-            </div>
+    const raw = priceElement.textContent.trim();
+    const cleaned = raw.replace(/[$,\s]/g, "");
 
-            <p>STARTER PACKAGE</p>
+    if (!/^\d+(\.\d+)?$/.test(cleaned)) {
+      return null;
+    }
 
-            <div class="uc-price">
-              $0.99
-            </div>
+    const price = Number(cleaned);
 
-            <div class="package-order">
-              ORDER ON WHATSAPP
-            </div>
+    return Number.isFinite(price) ? price : null;
+  }
 
-          </article>
+  function applyFilter() {
+    const cards = getCards();
+    let visibleCount = 0;
 
-          <!-- 325 UC -->
+    cards.forEach(function (card) {
+      if (!active) {
+        card.hidden = false;
+        card.style.display = "";
+        visibleCount++;
+        return;
+      }
 
-          <article
-            class="package-card reveal"
-            data-uc="325 UC"
-            data-price="4.99"
-            aria-label="Order 325 UC for 4.99 dollars"
-          >
+      const price = getCardPrice(card);
 
-            <div class="uc-icon">UC</div>
+      const matches =
+        price !== null &&
+        (minPrice === null || price >= minPrice) &&
+        (maxPrice === null || price <= maxPrice);
 
-            <div class="uc-amount">
-              325 <span>UC</span>
-            </div>
+      card.hidden = !matches;
+      card.style.display = matches ? "" : "none";
 
-            <p>POPULAR PACKAGE</p>
+      if (matches) {
+        visibleCount++;
+      }
+    });
 
-            <div class="uc-price">
-              $4.99
-            </div>
+    if (!active) {
+      result.textContent =
+        "Showing all available accounts: " + cards.length;
 
-            <div class="package-order">
-              ORDER ON WHATSAPP
-            </div>
+      empty.hidden = true;
+      return;
+    }
 
-          </article>
+    const low = minPrice === null ? "Any" : "$" + minPrice;
+    const high = maxPrice === null ? "Any" : "$" + maxPrice;
 
-          <!-- 660 UC -->
+    result.textContent =
+      "Price: " + low + " - " + high +
+      " | Found: " + visibleCount;
 
-          <article
-            class="package-card featured reveal"
-            data-uc="660 UC"
-            data-price="9.49"
-            aria-label="Order 660 UC for 9.49 dollars"
-          >
+    empty.hidden =
+      visibleCount !== 0 ||
+      cards.length === 0;
+  }
 
-            <div class="package-badge">
-              POPULAR CHOICE
-            </div>
-
-            <div class="uc-icon">UC</div>
-
-            <div class="uc-amount">
-              660 <span>UC</span>
-            </div>
-
-            <p>VALUE PACKAGE</p>
-
-            <div class="uc-price">
-              $9.49
-            </div>
-
-            <div class="package-order">
-              ORDER ON WHATSAPP
-            </div>
-
-          </article>
-
-          <!-- 1800 UC -->
-
-          <article
-            class="package-card reveal"
-            data-uc="1800 UC"
-            data-price="23.99"
-            aria-label="Order 1800 UC for 23.99 dollars"
-          >
-
-            <div class="uc-icon">UC</div>
-
-            <div class="uc-amount">
-              1800 <span>UC</span>
-            </div>
-
-            <p>ADVANCED PACKAGE</p>
-
-            <div class="uc-price">
-              $23.99
-            </div>
-
-            <div class="package-order">
-              ORDER ON WHATSAPP
-            </div>
-
-          </article>
-
-          <!-- 3500 UC -->
-
-          <article
-            class="package-card reveal"
-            data-uc="3500 UC"
-            data-price="47.50"
-            aria-label="Order 3500 UC for 47.50 dollars"
-          >
-
-            <div class="uc-icon">UC</div>
-
-            <div class="uc-amount">
-              3500 <span>UC</span>
-            </div>
-
-            <p>PRO PACKAGE</p>
-
-            <div class="uc-price">
-              $47.50
-            </div>
-
-            <div class="package-order">
-              ORDER ON WHATSAPP
-            </div>
-
-          </article>
-
-          <!-- 8100 UC -->
-
-          <article
-            class="package-card reveal"
-            data-uc="8100 UC"
-            data-price="95.00"
-            aria-label="Order 8100 UC for 95 dollars"
-          >
-
-            <div class="uc-icon">UC</div>
-
-            <div class="uc-amount">
-              8100 <span>UC</span>
-            </div>
-
-            <p>ULTIMATE PACKAGE</p>
-
-            <div class="uc-price">
-              $95.00
-            </div>
-
-            <div class="package-order">
-              ORDER ON WHATSAPP
-            </div>
-
-          </article>
-
-        </div>
-
-      </div>
-
-    </section>
-
-    <!-- ====================================
-         HOW IT WORKS
-    ===================================== -->
-
-    <section
-      class="section"
-      id="how"
-    >
-
-      <div class="container">
-
-        <div class="section-heading reveal">
-
-          <div class="section-tag">
-            ⚔️ SIMPLE ORDER PROCESS
-          </div>
-
-          <h2>
-            HOW IT <span>WORKS</span>
-          </h2>
-
-          <p>
-            Find what you want,
-            review the details and
-            contact us to complete
-            your order.
-          </p>
-
-        </div>
-
-        <div class="steps-grid">
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+
+    const minText = minInput.value.trim();
+    const maxText = maxInput.value.trim();
+
+    const parsedMin =
+      minText === "" ? null : Number(minText);
+
+    const parsedMax =
+      maxText === "" ? null : Number(maxText);
+
+    if (
+      (parsedMin !== null &&
+        (!Number.isFinite(parsedMin) || parsedMin < 0)) ||
+      (parsedMax !== null &&
+        (!Number.isFinite(parsedMax) || parsedMax < 0))
+    ) {
+      result.textContent = "Enter valid prices.";
+      return;
+    }
+
+    if (
+      parsedMin !== null &&
+      parsedMax !== null &&
+      parsedMin > parsedMax
+    ) {
+      result.textContent =
+        "Minimum cannot be greater than maximum.";
+      return;
+    }
+
+    minPrice = parsedMin;
+    maxPrice = parsedMax;
+
+    active = minPrice !== null || maxPrice !== null;
+
+    applyFilter();
+  });
+
+  resetButton.addEventListener("click", function () {
+    minInput.value = "";
+    maxInput.value = "";
+
+    minPrice = null;
+    maxPrice = null;
+    active = false;
+
+    applyFilter();
+  });
+
+  /*
+    Reapply the filter whenever Firebase
+    updates the account cards.
+  */
+
+  let scheduled = false;
+
+  const observer = new MutationObserver(function () {
+    if (scheduled) return;
+
+    scheduled = true;
+
+    requestAnimationFrame(function () {
+      scheduled = false;
+      applyFilter();
+    });
+  });
+
+  observer.observe(grid, {
+    childList:true,
+    subtree:true,
+    characterData:true
+  });
+
+  applyFilter();
+})();
+</script>
+
+<!-- ANIMATIONS -->
+
+<script>
+(function () {
+  const items = document.querySelectorAll(".reveal");
+
+  if (
+    !("IntersectionObserver" in window) ||
+    window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    items.forEach(function (item) {
+      item.classList.add("visible");
+    });
+    return;
+  }
+
+  const observer = new IntersectionObserver(function (entries) {
+    entries.forEach(function (entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("visible");
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold:0.08
+  });
+
+  items.forEach(function (item) {
+    observer.observe(item);
+  });
+})();
+</script>
+
+<!-- FIREBASE APPLICATION -->
+
+<script src="https://cdn.jsdelivr.net/npm/hls.js@1"></script>
+<script type="module" src="app.js"></script>
+
+</body>
+</html>
+       <div class="steps-grid">
 
           <article class="step reveal">
 
